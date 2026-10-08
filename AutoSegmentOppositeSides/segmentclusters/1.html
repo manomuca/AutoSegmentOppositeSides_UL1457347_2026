@@ -1,0 +1,189 @@
+<html><head><title>AutoSegment segment cluster landing page</title><style type="text/css"><html><head><title>AutoSegment segment cluster landing page</title><style type="text/css"></style></head>    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.1.2/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.2/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.full.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ideogram@1.15.0/dist/js/ideogram.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<body>
+
+<div style="position: relative; width:1024px; margin:auto;" width=1024px" align="center">
+<h2 style="padding-top: 50px">Triangulation matrix</h2><br/>
+
+This table represents a sorted triangulation matrix of the overlapping segments for the matches linked to this segment cluster. Using the triangulation data, a clustering is performed to identify clusters of triangulating segments. In some cases, all segments triangulate and the triangulation matrix will appear fully filled and colored green.  In other cases, two groups of segments are found, one representing each parental side. Note that it is possible that  a group consists of a single segment. The numbers in the matrix indicate a triangulation and show the overlap of two segments. In some cases, when there is more than one segment cluster, the segment clusters do not split into two groups. Instead, various segment clusters might appear. This is more often the case when examining smaller segments. 
+</br>
+
+In some cases, the overlap reported in the matrix is larger as the overlap that is expected. In that case, the two DNA matches share a larger segment as compared to the segment that they share with you. 
+</br></br>
+
+<div style="text-align:center">
+<button id="download-clusters">Download matrix</button>
+</div>
+
+
+<div style="position: relative; width: 700px; margin:auto;" width="700px" align="center">
+<div id="icw-table" style="position: relative; width: 700px; margin:auto;" width="700px" align="center">
+<script>
+
+var table = new Tabulator("#icw-table", {
+    responsiveLayoutCollapseStartOpen:false,
+    movableRows: true,
+    movableColumns: true,
+    layout:"fitDataFill",
+    responsiveLayout:"collapse",
+    columns:[
+        {title:"match", field:"match", align:"center",width:150},
+        {title:"*Odelice de Mesquita", field:"H785506", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Kennedy Vasconcelos", field:"YD1144341", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"*YSC", field:"A013751", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"*AnalogAndroid", field:"GQ7897158", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Maria JosA_ Albuquerque", field:"MF2341783", align:"center",width:50, formatter:"html", headerVertical:true},
+
+    ],
+});
+tableData = [{"MF2341783":"<div style='background-color: #FFFFFF;'><\/div>","H785506":"<div style='background-color: #58ff58;'>34.1<\/div>","GQ7897158":"<div style='background-color: #FFFFFF;'><\/div>","match":"*Odelice de Mesquita-1","A013751":"<div style='background-color: #FFFFFF;'><\/div>","YD1144341":"<div style='background-color: #58ff58;'>8.1<\/div>"},{"MF2341783":"<div style='background-color: #CDCDCD;'>9.2<\/div>","H785506":"<div style='background-color: #58ff58;'>8.1<\/div>","GQ7897158":"<div style='background-color: #FFFFFF;'><\/div>","match":"Kennedy Vasconcelos-1","A013751":"<div style='background-color: #FFFFFF;'><\/div>","YD1144341":"<div style='background-color: #58ff58;'>13.0<\/div>"},{"MF2341783":"<div style='background-color: #FFFFFF;'><\/div>","H785506":"<div style='background-color: #FFFFFF;'><\/div>","GQ7897158":"<div style='background-color: #FFFFFF;'><\/div>","match":"*YSC-2","A013751":"<div style='background-color: #ff4e50;'>11.7<\/div>","YD1144341":"<div style='background-color: #FFFFFF;'><\/div>"},{"MF2341783":"<div style='background-color: #FFFFFF;'><\/div>","H785506":"<div style='background-color: #FFFFFF;'><\/div>","GQ7897158":"<div style='background-color: #ffcdff;'>17.4<\/div>","match":"*AnalogAndroid-3","A013751":"<div style='background-color: #FFFFFF;'><\/div>","YD1144341":"<div style='background-color: #FFFFFF;'><\/div>"},{"MF2341783":"<div style='background-color: #ffab95;'>10.9<\/div>","H785506":"<div style='background-color: #FFFFFF;'><\/div>","GQ7897158":"<div style='background-color: #FFFFFF;'><\/div>","match":"Maria JosA_ Albuquerque-4","A013751":"<div style='background-color: #FFFFFF;'><\/div>","YD1144341":"<div style='background-color: #CDCDCD;'>9.2<\/div>"}];
+table.setData(tableData);
+document.getElementById("download-clusters").addEventListener("click", function(){
+table.download("xlsx", "triangulation_matrix.xlsx", {sheetName:"Clusters"});
+});
+</script>
+</div>
+</div>
+</div>
+
+<br/><br/><div style="position: relative; width:1200px; margin:auto;" width=1200" align="center">
+<h2 style="padding-top: 50px">Admixture results</h2><br/>
+
+AutoSegment Split offers a detailed breakdown of admixture results for individual DNA segments, providing insights at a finer level than traditional admixture analyses. Typically, admixture results are presented per chromosome, but our tool goes deeper, analyzing specific segments of each chromosome. This allows users to understand the genetic contributions from different ancestral populations across distinct regions of their genome, revealing how diverse ancestries are distributed along their chromosomes. This detailed view can help uncover ancestral connections that might otherwise remain hidden in broader chromosome-wide analyses. 
+</br>
+<br/><div id="chart1" </div>
+<script>
+var series1 =[{"data":[30.5,20.6,53.5,66.9,63.0],"name":"Amerindian"},{"data":[69.5,15.2,44.5,33.1,4.6],"name":"North_Atlantic"},{"data":[0.0,59.4,1.5,0.0,7.3],"name":"East_Med"},{"data":[0.0,4.8,0.0,0.0,20.2],"name":"West_Med"},{"data":[0.0,0.0,0.0,0.0,4.9],"name":"Siberian"},{"data":[0.0,0.0,0.6,0.0,0.0],"name":"Northeast_African"}];
+var options1 = {
+series: series1,
+chart: {
+ type: 'bar',
+ height: 350,
+stacked: true,
+stackType: 'normal'
+},
+plotOptions: {
+bar: {
+horizontal: true,
+},
+},
+stroke: {
+width: 1,
+colors: ['#fff']
+},
+title: {
+text: 'Admixture results using Eurogenes+K13 and 13 populations'
+},
+yaxis: {
+max: 100,
+title: {
+text: 'Value'
+}
+},
+ colors: ['#ff4560', '#00e396', '#008ffb', '#feb019', '#775dd0', '#ff66c4', '#5a5a5a'],
+ xaxis: {
+categories: ['H785506_1','YD1144341_1','A013751_2','GQ7897158_3','MF2341783_4'],
+},
+tooltip: {
+ y: {
+ formatter: function (val) {
+ return val + "%"
+}
+ }
+},
+ fill: {
+ opacity: 1
+},
+legend: {
+position: 'top',
+ horizontalAlign: 'left',
+offsetX: 40
+}
+};
+var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+chart1.render();;
+</script>
+<div align="center">
+    <h2 style="padding-top: 50px">Individual segment Cluster Information</h2><br />
+<div style="text-align:center">
+    The following table shows the 5 DNA segments for each of the 1 identified segment clusters.     </br></br>
+<button id="excelButtonIdOpposite">Download spreadsheet with segment clusters</button>
+</div>
+</div>
+
+
+</div>
+</div>
+<div style="position: relative; width: 1450px; margin:auto;" width="1450px" align="center">
+<div id="segmentClustersUsersTableOpposite" style="position: relative; width: 1450px; margin:auto;" width="1450px" align="center">
+<script>
+var tableDataSegmentClustersOpposite =[{"color":"#58ff58","start":34049,"cM":34.1,"snps":1098,"popModelSnps":408,"segment_cluster":1,"chr":2,"url":"mailto:savioonofre@hotmail.com","bar":[1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1],"total_cM":34.1,"stop":15847172,"kit":"H785506","name":"*Odelice de Mesquita","matchurl":"..\/matches\/GEDmatch_H785506.html","group_":1,"email":"savioonofre@hotmail.com"},{"color":"#58ff58","start":10408308,"cM":13.0,"snps":1377,"popModelSnps":169,"segment_cluster":1,"chr":2,"url":"mailto:kennedyvasconcelos@hotmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1],"total_cM":13.0,"stop":16857655,"kit":"YD1144341","name":"Kennedy Vasconcelos","matchurl":"..\/matches\/GEDmatch_YD1144341.html","group_":1,"email":"kennedyvasconcelos@hotmail.com"},{"color":"#ff4e50","start":7301432,"cM":11.7,"snps":280,"popModelSnps":101,"segment_cluster":2,"chr":2,"url":"mailto:chris.k.carver@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.7,"stop":11180113,"kit":"A013751","name":"*YSC","matchurl":"..\/matches\/GEDmatch_A013751.html","group_":1,"email":"chris.k.carver@gmail.com"},{"color":"#ffcdff","start":7301432,"cM":17.4,"snps":1453,"popModelSnps":175,"segment_cluster":3,"chr":2,"url":"mailto:jregi002@odu.edu","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1],"total_cM":17.4,"stop":14062902,"kit":"GQ7897158","name":"*AnalogAndroid","matchurl":"..\/matches\/GEDmatch_GQ7897158.html","group_":1,"email":"jregi002@odu.edu"},{"color":"#ffab95","start":11756429,"cM":10.9,"snps":1283,"popModelSnps":144,"segment_cluster":4,"chr":2,"url":"mailto:rabelodias@hotmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":10.9,"stop":18113623,"kit":"MF2341783","name":"Maria JosA_ Albuquerque","matchurl":"..\/matches\/GEDmatch_MF2341783.html","group_":1,"email":"rabelodias@hotmail.com"}]
+//generate bar chart
+var barFormatter = function(cell, formatterParams, onRendered){
+onRendered(function(){ //instantiate sparkline after the cell element has been aded to the DOM
+$(cell.getElement()).sparkline(cell.getValue(), {width:"100%", type:"bar", barWidth:5, disableTooltips:true});
+});
+};
+
+
+var segmentclusterstable = new Tabulator("#segmentClustersUsersTableOpposite", {
+initialSort:[
+{column:"segment_cluster", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1300px",
+    layout:"fitDataFill",
+  rowFormatter:function(row){  
+           row.getElement().style.backgroundColor = row.getData().color;
+    },
+    responsiveLayout:"collapse",
+    groupBy:"group_",
+    columns:[
+   {title:"Segment cluster", field:"cluster", width:100, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for cluster", formatterParams:{
+	 urlField:"cluster_url",
+    labelField:"cluster",
+    target:"_blank",
+            }},
+        {title:"Cluster", field:"segment_cluster", align:"center",width:120, sorter:"number"},
+        {title:"Chr", field:"chr", align:"center",width:70, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Start", field:"start", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Stop", field:"stop", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+{title:"Segment representation", field:"bar", width:250, formatter:barFormatter},
+        {title:"SNP count", field:"snps", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Admixture SNP count", field:"popModelSnps", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+   {title:"Match", field:"matchurl", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for name", formatterParams:{
+	 urlField:"matchurl",
+    labelField:"name",
+    target:"_blank",
+            }},
+   {title:"Email", field:"email", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for email", formatterParams:{
+	 urlField:"url",
+    labelField:"email",
+    target:"_blank",
+            }},
+        {title:"Kitnumber", field:"kit", align:"center",width:100},
+        {title:"cM", field:"cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"Total cM", field:"total_cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Total cM", headerFilterFunc:">="},
+    ],
+});
+segmentclusterstable.setData(tableDataSegmentClustersOpposite);
+
+document.getElementById("excelButtonIdOpposite").addEventListener("click", function(){
+segmentclusterstable.download("xlsx", "segmentclusterstable.xlsx", {sheetName:"SegmentClusters"});
+});
+</script>
+<br/><br/><br/>
+
+</div></div></body></html>

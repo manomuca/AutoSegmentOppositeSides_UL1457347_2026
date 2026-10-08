@@ -1,0 +1,193 @@
+<html><head><title>AutoSegment segment cluster landing page</title><style type="text/css"><html><head><title>AutoSegment segment cluster landing page</title><style type="text/css"></style></head>    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.1.2/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.2/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.full.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ideogram@1.15.0/dist/js/ideogram.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<body>
+
+<div style="position: relative; width:1024px; margin:auto;" width=1024px" align="center">
+<h2 style="padding-top: 50px">Triangulation matrix</h2><br/>
+
+This table represents a sorted triangulation matrix of the overlapping segments for the matches linked to this segment cluster. Using the triangulation data, a clustering is performed to identify clusters of triangulating segments. In some cases, all segments triangulate and the triangulation matrix will appear fully filled and colored green.  In other cases, two groups of segments are found, one representing each parental side. Note that it is possible that  a group consists of a single segment. The numbers in the matrix indicate a triangulation and show the overlap of two segments. In some cases, when there is more than one segment cluster, the segment clusters do not split into two groups. Instead, various segment clusters might appear. This is more often the case when examining smaller segments. 
+</br>
+
+In some cases, the overlap reported in the matrix is larger as the overlap that is expected. In that case, the two DNA matches share a larger segment as compared to the segment that they share with you. 
+</br></br>
+
+<div style="text-align:center">
+<button id="download-clusters">Download matrix</button>
+</div>
+
+
+<div style="position: relative; width: 900px; margin:auto;" width="900px" align="center">
+<div id="icw-table" style="position: relative; width: 900px; margin:auto;" width="900px" align="center">
+<script>
+
+var table = new Tabulator("#icw-table", {
+    responsiveLayoutCollapseStartOpen:false,
+    movableRows: true,
+    movableColumns: true,
+    layout:"fitDataFill",
+    responsiveLayout:"collapse",
+    columns:[
+        {title:"match", field:"match", align:"center",width:150},
+        {title:"Adriana Hazelton", field:"A970098", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Thais Pedroso", field:"AC6176045", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"AntA_nio Melo MourA_o Neto", field:"EB1930440", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Anita", field:"HN1986411", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Raul Caio de Mesquita Oliveira", field:"PD3308203", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"*Thiago M", field:"PK5065395", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"*T_Matos", field:"QJ4266622", align:"center",width:50, formatter:"html", headerVertical:true},
+
+    ],
+});
+tableData = [{"EB1930440":"<div style='background-color: #90EE90;'>12.1<\/div>","PK5065395":"<div style='background-color: #90EE90;'>15.0<\/div>","HN1986411":"<div style='background-color: #90EE90;'>16.7<\/div>","match":"Adriana Hazelton-5","A970098":"<div style='background-color: #90EE90;'>18.1<\/div>","AC6176045":"<div style='background-color: #90EE90;'>15.7<\/div>","QJ4266622":"<div style='background-color: #90EE90;'>17.3<\/div>","PD3308203":"<div style='background-color: #90EE90;'>16.1<\/div>"},{"EB1930440":"<div style='background-color: #90EE90;'>12.1<\/div>","PK5065395":"<div style='background-color: #90EE90;'>14.8<\/div>","HN1986411":"<div style='background-color: #90EE90;'>15.7<\/div>","match":"Thais Pedroso-5","A970098":"<div style='background-color: #90EE90;'>15.7<\/div>","AC6176045":"<div style='background-color: #90EE90;'>15.7<\/div>","QJ4266622":"<div style='background-color: #90EE90;'>15.7<\/div>","PD3308203":"<div style='background-color: #90EE90;'>15.0<\/div>"},{"EB1930440":"<div style='background-color: #90EE90;'>12.1<\/div>","PK5065395":"<div style='background-color: #90EE90;'>12.1<\/div>","HN1986411":"<div style='background-color: #90EE90;'>12.1<\/div>","match":"AntA_nio Melo MourA_o Neto-5","A970098":"<div style='background-color: #90EE90;'>12.1<\/div>","AC6176045":"<div style='background-color: #90EE90;'>12.1<\/div>","QJ4266622":"<div style='background-color: #90EE90;'>12.1<\/div>","PD3308203":"<div style='background-color: #90EE90;'>11.3<\/div>"},{"EB1930440":"<div style='background-color: #90EE90;'>12.1<\/div>","PK5065395":"<div style='background-color: #90EE90;'>15.9<\/div>","HN1986411":"<div style='background-color: #90EE90;'>18.0<\/div>","match":"Anita-5","A970098":"<div style='background-color: #90EE90;'>16.7<\/div>","AC6176045":"<div style='background-color: #90EE90;'>15.7<\/div>","QJ4266622":"<div style='background-color: #90EE90;'>17.8<\/div>","PD3308203":"<div style='background-color: #90EE90;'>16.1<\/div>"},{"EB1930440":"<div style='background-color: #90EE90;'>11.3<\/div>","PK5065395":"<div style='background-color: #90EE90;'>14.1<\/div>","HN1986411":"<div style='background-color: #90EE90;'>16.1<\/div>","match":"Raul Caio de Mesquita Oliveira-5","A970098":"<div style='background-color: #90EE90;'>16.1<\/div>","AC6176045":"<div style='background-color: #90EE90;'>15.0<\/div>","QJ4266622":"<div style='background-color: #90EE90;'>16.1<\/div>","PD3308203":"<div style='background-color: #90EE90;'>16.1<\/div>"},{"EB1930440":"<div style='background-color: #90EE90;'>12.1<\/div>","PK5065395":"<div style='background-color: #90EE90;'>15.9<\/div>","HN1986411":"<div style='background-color: #90EE90;'>15.9<\/div>","match":"*Thiago M-5","A970098":"<div style='background-color: #90EE90;'>15.0<\/div>","AC6176045":"<div style='background-color: #90EE90;'>14.8<\/div>","QJ4266622":"<div style='background-color: #90EE90;'>15.9<\/div>","PD3308203":"<div style='background-color: #90EE90;'>14.1<\/div>"},{"EB1930440":"<div style='background-color: #90EE90;'>12.1<\/div>","PK5065395":"<div style='background-color: #90EE90;'>15.9<\/div>","HN1986411":"<div style='background-color: #90EE90;'>17.8<\/div>","match":"*T_Matos-5","A970098":"<div style='background-color: #90EE90;'>17.3<\/div>","AC6176045":"<div style='background-color: #90EE90;'>15.7<\/div>","QJ4266622":"<div style='background-color: #90EE90;'>19.4<\/div>","PD3308203":"<div style='background-color: #90EE90;'>16.1<\/div>"}];
+table.setData(tableData);
+document.getElementById("download-clusters").addEventListener("click", function(){
+table.download("xlsx", "triangulation_matrix.xlsx", {sheetName:"Clusters"});
+});
+</script>
+</div>
+</div>
+</div>
+
+<br/><br/><div style="position: relative; width:1200px; margin:auto;" width=1200" align="center">
+<h2 style="padding-top: 50px">Admixture results</h2><br/>
+
+AutoSegment Split offers a detailed breakdown of admixture results for individual DNA segments, providing insights at a finer level than traditional admixture analyses. Typically, admixture results are presented per chromosome, but our tool goes deeper, analyzing specific segments of each chromosome. This allows users to understand the genetic contributions from different ancestral populations across distinct regions of their genome, revealing how diverse ancestries are distributed along their chromosomes. This detailed view can help uncover ancestral connections that might otherwise remain hidden in broader chromosome-wide analyses. 
+</br>
+<br/><div id="chart2" </div>
+<script>
+var series2 =[{"data":[89.3,84.0,85.2,68.8,100.0,77.8,91.6],"name":"West_Med"},{"data":[10.7,2.9,12.3,0.0,0.0,19.0,6.2],"name":"North_Atlantic"},{"data":[0.0,8.2,1.8,31.2,0.0,3.2,0.0],"name":"Amerindian"},{"data":[0.0,4.8,0.0,0.0,0.0,0.0,0.0],"name":"Sub-Saharan"},{"data":[0.0,0.0,0.0,0.0,0.0,0.0,2.2],"name":"West_Asian"},{"data":[0.0,0.0,0.7,0.0,0.0,0.0,0.0],"name":"Oceanian"}];
+var options2 = {
+series: series2,
+chart: {
+ type: 'bar',
+ height: 390,
+stacked: true,
+stackType: 'normal'
+},
+plotOptions: {
+bar: {
+horizontal: true,
+},
+},
+stroke: {
+width: 1,
+colors: ['#fff']
+},
+title: {
+text: 'Admixture results using Eurogenes+K13 and 13 populations'
+},
+yaxis: {
+max: 100,
+title: {
+text: 'Value'
+}
+},
+ colors: ['#ff4560', '#00e396', '#008ffb', '#feb019', '#775dd0', '#ff66c4', '#5a5a5a'],
+ xaxis: {
+categories: ['A970098_5','AC6176045_5','EB1930440_5','HN1986411_5','PD3308203_5','PK5065395_5','QJ4266622_5'],
+},
+tooltip: {
+ y: {
+ formatter: function (val) {
+ return val + "%"
+}
+ }
+},
+ fill: {
+ opacity: 1
+},
+legend: {
+position: 'top',
+ horizontalAlign: 'left',
+offsetX: 40
+}
+};
+var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+chart2.render();;
+</script>
+<div align="center">
+    <h2 style="padding-top: 50px">Individual segment Cluster Information</h2><br />
+<div style="text-align:center">
+    The following table shows the 7 DNA segments for each of the 1 identified segment clusters.     </br></br>
+<button id="excelButtonIdOpposite">Download spreadsheet with segment clusters</button>
+</div>
+</div>
+
+
+</div>
+</div>
+<div style="position: relative; width: 1450px; margin:auto;" width="1450px" align="center">
+<div id="segmentClustersUsersTableOpposite" style="position: relative; width: 1450px; margin:auto;" width="1450px" align="center">
+<script>
+var tableDataSegmentClustersOpposite =[{"color":"#90EE90","start":14588168,"cM":18.1,"snps":711,"popModelSnps":334,"segment_cluster":5,"chr":20,"url":"mailto:adrianakathleen94@gmail.com","bar":[1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1],"total_cM":33.3,"stop":34950604,"kit":"A970098","name":"Adriana Hazelton","matchurl":"..\/matches\/GEDmatch_A970098.html","group_":2,"email":"adrianakathleen94@gmail.com"},{"color":"#90EE90","start":15624156,"cM":15.7,"snps":2463,"popModelSnps":310,"segment_cluster":5,"chr":20,"url":"mailto:thaispedroso9@hotmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1],"total_cM":59.4,"stop":35028465,"kit":"AC6176045","name":"Thais Pedroso","matchurl":"..\/matches\/GEDmatch_AC6176045.html","group_":2,"email":"thaispedroso9@hotmail.com"},{"color":"#90EE90","start":17597045,"cM":12.1,"snps":1923,"popModelSnps":235,"segment_cluster":5,"chr":20,"url":"mailto:amelomourao@hotmail.com","bar":[1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1],"total_cM":23.6,"stop":35028465,"kit":"EB1930440","name":"AntA_nio Melo MourA_o Neto","matchurl":"..\/matches\/GEDmatch_EB1930440.html","group_":2,"email":"amelomourao@hotmail.com"},{"color":"#90EE90","start":15189598,"cM":18.0,"snps":2732,"popModelSnps":343,"segment_cluster":5,"chr":20,"url":"mailto:prvmesquita@hotmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":18.0,"stop":36071572,"kit":"HN1986411","name":"Anita","matchurl":"..\/matches\/GEDmatch_HN1986411.html","group_":2,"email":"prvmesquita@hotmail.com"},{"color":"#90EE90","start":15287316,"cM":16.1,"snps":721,"popModelSnps":289,"segment_cluster":5,"chr":20,"url":"mailto:Raulcmo@hotmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1],"total_cM":30.2,"stop":32369354,"kit":"PD3308203","name":"Raul Caio de Mesquita Oliveira","matchurl":"..\/matches\/GEDmatch_PD3308203.html","group_":2,"email":"Raulcmo@hotmail.com"},{"color":"#90EE90","start":15844131,"cM":15.9,"snps":2522,"popModelSnps":311,"segment_cluster":5,"chr":20,"url":"mailto:thiagomedan@gmail.com","bar":[1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":32.7,"stop":36071572,"kit":"PK5065395","name":"*Thiago M","matchurl":"..\/matches\/GEDmatch_PK5065395.html","group_":2,"email":"thiagomedan@gmail.com"},{"color":"#90EE90","start":15122254,"cM":19.4,"snps":876,"popModelSnps":336,"segment_cluster":5,"chr":20,"url":"mailto:adrianakathleen94@gmail.com","bar":[1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":34.6,"stop":36823666,"kit":"QJ4266622","name":"*T_Matos","matchurl":"..\/matches\/GEDmatch_QJ4266622.html","group_":2,"email":"adrianakathleen94@gmail.com"}]
+//generate bar chart
+var barFormatter = function(cell, formatterParams, onRendered){
+onRendered(function(){ //instantiate sparkline after the cell element has been aded to the DOM
+$(cell.getElement()).sparkline(cell.getValue(), {width:"100%", type:"bar", barWidth:5, disableTooltips:true});
+});
+};
+
+
+var segmentclusterstable = new Tabulator("#segmentClustersUsersTableOpposite", {
+initialSort:[
+{column:"segment_cluster", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1300px",
+    layout:"fitDataFill",
+  rowFormatter:function(row){  
+           row.getElement().style.backgroundColor = row.getData().color;
+    },
+    responsiveLayout:"collapse",
+    groupBy:"group_",
+    columns:[
+   {title:"Segment cluster", field:"cluster", width:100, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for cluster", formatterParams:{
+	 urlField:"cluster_url",
+    labelField:"cluster",
+    target:"_blank",
+            }},
+        {title:"Cluster", field:"segment_cluster", align:"center",width:120, sorter:"number"},
+        {title:"Chr", field:"chr", align:"center",width:70, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Start", field:"start", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Stop", field:"stop", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+{title:"Segment representation", field:"bar", width:250, formatter:barFormatter},
+        {title:"SNP count", field:"snps", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Admixture SNP count", field:"popModelSnps", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+   {title:"Match", field:"matchurl", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for name", formatterParams:{
+	 urlField:"matchurl",
+    labelField:"name",
+    target:"_blank",
+            }},
+   {title:"Email", field:"email", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for email", formatterParams:{
+	 urlField:"url",
+    labelField:"email",
+    target:"_blank",
+            }},
+        {title:"Kitnumber", field:"kit", align:"center",width:100},
+        {title:"cM", field:"cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"Total cM", field:"total_cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Total cM", headerFilterFunc:">="},
+    ],
+});
+segmentclusterstable.setData(tableDataSegmentClustersOpposite);
+
+document.getElementById("excelButtonIdOpposite").addEventListener("click", function(){
+segmentclusterstable.download("xlsx", "segmentclusterstable.xlsx", {sheetName:"SegmentClusters"});
+});
+</script>
+<br/><br/><br/>
+
+</div></div></body></html>

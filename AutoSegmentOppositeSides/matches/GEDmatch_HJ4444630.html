@@ -1,0 +1,162 @@
+<html class="genetic-affairs">
+<head>
+    <meta charset="utf-8"/>
+    <title>Genetic Affairs - DNA match report Veronica Perez</title>
+    <link href="geneticaffairs.css" rel="stylesheet">
+    <link href="geneticaffairs_tree.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.1.2/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="page-header">
+    <div>
+        <h1 class="title">DNA match report</h1>
+		<h2 class="subtitle">For: Veronica Perez HJ4444630 GEDmatch September 10 2026 </h2>
+    </div>
+	<div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.2/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.full.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ideogram@1.15.0/dist/js/ideogram.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script>
+
+      
+
+        function createElipsisText(text){
+            var maxStringlength=20;
+            if(text.length < maxStringlength){return text}else{
+                return text.slice(0,maxStringlength) + "...";
+            }
+        }
+
+        (function () {
+            if (typeof NodeList.prototype.forEach === "function") return false;
+            NodeList.prototype.forEach = Array.prototype.forEach;
+        })();
+
+
+		
+          var globalInfo = {total_number_dna_matches: 1, min_cm: 10, max_cm: 10, min_match_shared_cm: 0, min_cluster_size:1,triangulated_groups:false}
+		var commonAncestorClusters = []
+		var autoPedigreeClusters = []
+		var commonAncestors = []
+
+
+
+}
+
+        document.querySelector(".global-clusters_wrapper").innerHTML = getClusterGlobalData();
+
+    </script>
+<div style="position: relative; width: 750px; margin:auto;" width="750px" align="center">
+<div align="center">
+
+</br></br><h2>Information about DNA match</h2>
+</div>
+DNA match Veronica Perez shares a total of 10.8 cM of which 1 segment(s) are 10 cM or larger. The following segment(s) larger than or equal to 10 cM are shared: </br></br></br>chromosome <b>1</b> :<b> 10.8 cM</b>, start: 241535092 end: 245420078 and 524 SNPs</br></br></br></br>
+
+
+<br>
+</div>
+<div style="position: relative; width: 750px; margin:auto;" width="750px" align="center">
+<div align="center">
+
+<h2>Explanation of DNA match report</h2>
+</div>
+<p>For each match that was retrieved an AutoCluster report is created using the targeted clustering approach. For this analysis, we take the shared matches for the concerned match. Next, we download the shared matches of these shared matches. The resulting matches are used for the AutoCluster report. They represent the clusters for which the match is a member.<br><br> Next, we provide the results for the <a href="https://www.geneticaffairs.com/features-autosegment.html">AutoSegment</a> analysis that is performed using overlapping segments for the match. To verify these overlapping segments, we use shared match data for FamilyTreeDNA matches. Overlapping segments for which the linked DNA matches are not shared match are not taken into account. For the GEDmatch procedure, we employ the triangulation data from GEDmatch. <br><br>
+
+</div>
+
+<div style="position: relative; width: 1150px; margin:auto; width:1150px; text-align:center"><div id="segments">
+<h2>Chromosome segments</h2>
+</div>
+
+<script type="text/javascript">
+
+var config = {
+container: "#segments",organism: 'human',
+chrHeight: 900,
+chrMargin: 2,
+annotations:[{"stop":245420078,"color":"#008040","name":"segment from cluster 27 sharing 10.8 cM with Veronica Perez","start":241535092,"chr":"1"},{"stop":245420078,"color":"#008040","name":"segment from cluster 27 sharing 10.8 cM with Veronica Perez","start":241535092,"chr":"1"}],
+ annotationsLayout: 'overlay',
+orientation: 'horizontal'
+ };
+var ideogram = new Ideogram(config);
+ </script>
+</div>
+<div style="position: relative; width: 1150px; margin:auto; width:1150px; text-align:center">
+<div align="center">
+
+<h2>Explanation of chromosome browser</h2>
+</div>
+<p>A chromosome browser provides a graphical representation of the segments that are shared with this DNA match. Before we visualize the shared DNA segments we perform a clustering to group segments that are overlapping. Next, these segment clusters are visualized using a certain color. Segments that are not present in an segment cluster are represented by orange segments. In addition to the graphical representation a table is available that contains the detailed information for the segment clusters as well as a table with the segments that are not clustered together.<br><br>
+
+</div>
+
+<div align="center">
+    <h2 style="padding-top: 50px">GEDmatch segment clusters for match Veronica Perez</h2><br />
+</div>
+
+
+<div style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<div id="users-table_linked" style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<script>
+var tableData_linked =[{"note":"","color":"#58ff58","start":243036667,"cM":10.4,"roh":"","snps":518,"chr":1,"url":"mailto:niall.horn@btopenworld.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1],"total_cM":10.4,"dtc":"GEDmatch","stop":246918470,"name":"Niall Horn","matchurl":"GEDmatch_ED9601621.html","group_":"109","email":"niall.horn@btopenworld.com"},{"note":"","color":"#ff4e50","start":242878998,"cM":10.4,"roh":"","snps":516,"chr":1,"url":"mailto:jar.hos@seznam.cz","bar":[1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1],"total_cM":10.4,"dtc":"GEDmatch","stop":246727860,"name":"Jaroslav Hosek","matchurl":"GEDmatch_FQ7892086.html","group_":"110","email":"jar.hos@seznam.cz"},{"note":"","color":"#ffcdff","start":242889492,"cM":10.8,"roh":"","snps":536,"chr":1,"url":"mailto:lamalebo@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1],"total_cM":31.7,"dtc":"GEDmatch","stop":246918470,"name":"*Herta","matchurl":"GEDmatch_GP8815350.html","group_":"111","email":"lamalebo@gmail.com"},{"note":"","color":"#ffab95","start":242874434,"cM":10.8,"roh":"","snps":543,"chr":1,"url":"mailto:carlochiancone@icloud.com","bar":[1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1],"total_cM":10.8,"dtc":"GEDmatch","stop":246918470,"name":"Carlo Chiancone","matchurl":"GEDmatch_HF1596273.html","group_":"112","email":"carlochiancone@icloud.com"},{"note":"","color":"#ffedff","start":241535092,"cM":10.8,"roh":"","snps":524,"chr":1,"url":"mailto:veroperezb@yahoo.com","bar":[1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":10.8,"dtc":"GEDmatch","stop":245420078,"name":"Veronica Perez","matchurl":"GEDmatch_HJ4444630.html","group_":"113","email":"veroperezb@yahoo.com"},{"note":"","color":"#ffff44","start":242150334,"cM":10.9,"roh":"","snps":519,"chr":1,"url":"mailto:afaldrabecus@gmx.de","bar":[1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1],"total_cM":10.9,"dtc":"GEDmatch","stop":245949655,"name":"*ULH","matchurl":"GEDmatch_JK6520919.html","group_":"114","email":"afaldrabecus@gmx.de"},{"note":"","color":"#2effff","start":241690554,"cM":10.6,"roh":"","snps":502,"chr":1,"url":"mailto:monicacebal@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":10.6,"dtc":"GEDmatch","stop":245464740,"name":"MarA_a Leonor Garrido","matchurl":"GEDmatch_ND9953765.html","group_":"115","email":"monicacebal@gmail.com"},{"note":"","color":"#3eedff","start":242874959,"cM":10.0,"roh":"","snps":499,"chr":1,"url":"mailto:freconfarmer@protonmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1],"total_cM":10.0,"dtc":"GEDmatch","stop":246534452,"name":"*TMB","matchurl":"GEDmatch_NW9049581.html","group_":"116","email":"freconfarmer@protonmail.com"},{"note":"","color":"#fffd1c","start":242306890,"cM":13.3,"roh":"","snps":703,"chr":1,"url":"mailto:hannu.kariniemi@gmail.com","bar":[1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":13.3,"dtc":"GEDmatch","stop":247360538,"name":"Hannu","matchurl":"GEDmatch_PM7216262.html","group_":"117","email":"hannu.kariniemi@gmail.com"},{"note":"","color":"#58ff58","start":242878998,"cM":10.4,"roh":"","snps":518,"chr":1,"url":"mailto:cmgarciasalicioni@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1],"total_cM":10.4,"dtc":"GEDmatch","stop":246697186,"name":"*Caro","matchurl":"GEDmatch_PN7703720.html","group_":"118","email":"cmgarciasalicioni@gmail.com"},{"note":"","color":"#ff4e50","start":241882665,"cM":10.2,"roh":"","snps":462,"chr":1,"url":"mailto:ajmasterson1@gmail.com","bar":[1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":10.2,"dtc":"GEDmatch","stop":245480950,"name":"*AJM","matchurl":"GEDmatch_QG5706844.html","group_":"119","email":"ajmasterson1@gmail.com"},{"note":"","color":"#ffcdff","start":241841958,"cM":11.5,"roh":"","snps":557,"chr":1,"url":"mailto:gedmatch@cliogenealogy.com","bar":[1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1],"total_cM":11.5,"dtc":"GEDmatch","stop":245872185,"name":"Alix Bibiana Nieto ChivatA_","matchurl":"GEDmatch_WH8855324.html","group_":"120","email":"gedmatch@cliogenealogy.com"},{"note":"","color":"#ffab95","start":242890160,"cM":10.3,"roh":"","snps":509,"chr":1,"url":"mailto:bo.mihaylova@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1],"total_cM":10.3,"dtc":"GEDmatch","stop":246697186,"name":"*EG","matchurl":"GEDmatch_XM2252851.html","group_":"121","email":"bo.mihaylova@gmail.com"},{"note":"","color":"#ffedff","start":241418992,"cM":10.6,"roh":"","snps":512,"chr":1,"url":"mailto:finnyochoa@outlook.com","bar":[1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":10.6,"dtc":"GEDmatch","stop":245287508,"name":"*Finny Ochoa","matchurl":"GEDmatch_XZ7829426.html","group_":"122","email":"finnyochoa@outlook.com"}]
+//generate bar chart
+var barFormatter = function(cell, formatterParams, onRendered){
+onRendered(function(){ //instantiate sparkline after the cell element has been aded to the DOM
+$(cell.getElement()).sparkline(cell.getValue(), {width:"100%", type:"bar", barWidth:5, disableTooltips:true});
+});
+};
+
+
+var table_linked = new Tabulator("#users-table_linked", {
+initialSort:[
+{column:"start", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1300px",
+    layout:"fitDataFill",
+  rowFormatter:function(row){  
+           row.getElement().style.backgroundColor = row.getData().color;
+    },
+    responsiveLayout:"collapse",
+    columns:[
+        {title:"Cluster", field:"cluster", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Segment Cluster", field:"group_", align:"center",width:160, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Chr", field:"chr", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Start", field:"start", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Stop", field:"stop", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+{title:"Segment representation", field:"bar", width:250, formatter:barFormatter},
+        {title:"SNP count", field:"snps", align:"center",width:120, headerFilter:true, headerFilterPlaceholder:"Search"},
+   {title:"Match", field:"matchurl", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for name", formatterParams:{
+	 urlField:"matchurl",
+    labelField:"name",
+    target:"_blank",
+            }},
+   {title:"Email", field:"email", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for email", formatterParams:{
+	 urlField:"url",
+    labelField:"email",
+    target:"_blank",
+            }},
+        {title:"cM", field:"cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"Total cM", field:"total_cM", align:"center",width:120, headerFilter:"number", headerFilterPlaceholder:"Total cM", headerFilterFunc:">="},
+        {title:"Notes", field:"note", width:200, headerFilter:true, headerFilterPlaceholder:"Search for notes"},
+    ],
+});
+table_linked.setData(tableData_linked);
+</script>
+</div>
+<footer>
+<aside>September 10 2026</aside>
+<a href="https://www.linkedin.com/in/evert-jan-blom/" rel="author">Evert-Jan Blom</a>, d3.js template by Mike Bostock
+</footer>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<html><head><title>AutoSegment segment cluster landing page</title><style type="text/css"><html><head><title>AutoSegment segment cluster landing page</title><style type="text/css"></style></head>    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.1.2/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.2/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.full.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ideogram@1.15.0/dist/js/ideogram.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<body>
+
+<div style="position: relative; width:1024px; margin:auto;" width=1024px" align="center">
+<h2 style="padding-top: 50px">Triangulation matrix</h2><br/>
+
+This table represents a sorted triangulation matrix of the overlapping segments for the matches linked to this segment cluster. Using the triangulation data, a clustering is performed to identify clusters of triangulating segments. In some cases, all segments triangulate and the triangulation matrix will appear fully filled and colored green.  In other cases, two groups of segments are found, one representing each parental side. Note that it is possible that  a group consists of a single segment. The numbers in the matrix indicate a triangulation and show the overlap of two segments. In some cases, when there is more than one segment cluster, the segment clusters do not split into two groups. Instead, various segment clusters might appear. This is more often the case when examining smaller segments. 
+</br>
+
+In some cases, the overlap reported in the matrix is larger as the overlap that is expected. In that case, the two DNA matches share a larger segment as compared to the segment that they share with you. 
+</br></br>
+
+<div style="text-align:center">
+<button id="download-clusters">Download matrix</button>
+</div>
+
+
+<div style="position: relative; width: 1800px; margin:auto;" width="1800px" align="center">
+<div id="icw-table" style="position: relative; width: 1800px; margin:auto;" width="1800px" align="center">
+<script>
+
+var table = new Tabulator("#icw-table", {
+    responsiveLayoutCollapseStartOpen:false,
+    movableRows: true,
+    movableColumns: true,
+    layout:"fitDataFill",
+    responsiveLayout:"collapse",
+    columns:[
+        {title:"match", field:"match", align:"center",width:150},
+        {title:"Dalma GimA_nez", field:"AE9361123", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Guillermo Diaz Lara", field:"JQ2782482", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Alexandrina Maria de Lima", field:"QR7508457", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Zaddy MuA_oz", field:"DK5517113", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"*Mitchell Dupre", field:"KE6302165", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Olinda Forsythe", field:"RP1706725", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"MarA_a Yolanda Cruz", field:"FC9002928", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Adriana Saldana Orsi", field:"QG3796212", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Ineza Grabowska", field:"EX7497238", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Magdalena Romero", field:"FS6329961", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Breno", field:"FU1026249", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"*Mechi", field:"KW3090986", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Luis Angel B", field:"MZ1901221", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"Rhonda Clayton", field:"PH7856481", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"jonathan", field:"WA6026935", align:"center",width:50, formatter:"html", headerVertical:true},
+
+        {title:"*McSamson", field:"WZ6884169", align:"center",width:50, formatter:"html", headerVertical:true},
+
+    ],
+});
+tableData = [{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #fffd1c;'>7.9<\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #CDCDCD;'>8.1<\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Dalma GimA_nez-18","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #fffd1c;'>10.7<\/div>","AE9361123":"<div style='background-color: #fffd1c;'>11.1<\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #fffd1c;'>8.5<\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Guillermo Diaz Lara-18","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #CDCDCD;'>11.1<\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #fffd1c;'>11.5<\/div>","AE9361123":"<div style='background-color: #fffd1c;'>10.7<\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #CDCDCD;'>8.5<\/div>","QR7508457":"<div style='background-color: #fffd1c;'>13.3<\/div>","RP1706725":"<div style='background-color: #CDCDCD;'>7.4<\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Alexandrina Maria de Lima-18","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #CDCDCD;'>9.3<\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #fffd1c;'>8.5<\/div>","AE9361123":"<div style='background-color: #fffd1c;'>7.9<\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #CDCDCD;'>9.3<\/div>","RP1706725":"<div style='background-color: #58ff58;'>7.7<\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #58ff58;'>7.0<\/div>","match":"Zaddy MuA_oz-19","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #58ff58;'>11.4<\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #CDCDCD;'>11.1<\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #58ff58;'>7.2<\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #58ff58;'>10.8<\/div>","match":"*Mitchell Dupre-19","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #58ff58;'>7.0<\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #CDCDCD;'>7.4<\/div>","RP1706725":"<div style='background-color: #58ff58;'>11.2<\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #58ff58;'>7.2<\/div>","match":"Olinda Forsythe-19","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #58ff58;'>7.7<\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #ff4e50;'>13.3<\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"MarA_a Yolanda Cruz-20","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #ff4e50;'>9.6<\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #ff4e50;'>9.6<\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Adriana Saldana Orsi-20","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #ff4e50;'>11.4<\/div>"},{"EX7497238":"<div style='background-color: #ffcdff;'>10.5<\/div>","QR7508457":"<div style='background-color: #CDCDCD;'>8.5<\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Ineza Grabowska-21","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Magdalena Romero-22","FS6329961":"<div style='background-color: #ffab95;'>10.7<\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Breno-23","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #ffedff;'>24.4<\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #ffff44;'>10.2<\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"*Mechi-24","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #CDCDCD;'>8.1<\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Luis Angel B-25","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #2effff;'>10.9<\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"Rhonda Clayton-26","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #3eedff;'>11.6<\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"jonathan-27","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #FFFFFF;'><\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #fffd1c;'>10.4<\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"},{"EX7497238":"<div style='background-color: #FFFFFF;'><\/div>","QR7508457":"<div style='background-color: #FFFFFF;'><\/div>","RP1706725":"<div style='background-color: #FFFFFF;'><\/div>","KW3090986":"<div style='background-color: #FFFFFF;'><\/div>","FC9002928":"<div style='background-color: #FFFFFF;'><\/div>","KE6302165":"<div style='background-color: #FFFFFF;'><\/div>","match":"*McSamson-28","FS6329961":"<div style='background-color: #FFFFFF;'><\/div>","DK5517113":"<div style='background-color: #FFFFFF;'><\/div>","FU1026249":"<div style='background-color: #FFFFFF;'><\/div>","MZ1901221":"<div style='background-color: #FFFFFF;'><\/div>","WZ6884169":"<div style='background-color: #58ff58;'>10.5<\/div>","JQ2782482":"<div style='background-color: #FFFFFF;'><\/div>","AE9361123":"<div style='background-color: #FFFFFF;'><\/div>","PH7856481":"<div style='background-color: #FFFFFF;'><\/div>","WA6026935":"<div style='background-color: #FFFFFF;'><\/div>","QG3796212":"<div style='background-color: #FFFFFF;'><\/div>"}];
+table.setData(tableData);
+document.getElementById("download-clusters").addEventListener("click", function(){
+table.download("xlsx", "triangulation_matrix.xlsx", {sheetName:"Clusters"});
+});
+</script>
+</div>
+</div>
+</div>
+
+<br/><br/><div style="position: relative; width:1200px; margin:auto;" width=1200" align="center">
+<h2 style="padding-top: 50px">Admixture results</h2><br/>
+
+AutoSegment Split offers a detailed breakdown of admixture results for individual DNA segments, providing insights at a finer level than traditional admixture analyses. Typically, admixture results are presented per chromosome, but our tool goes deeper, analyzing specific segments of each chromosome. This allows users to understand the genetic contributions from different ancestral populations across distinct regions of their genome, revealing how diverse ancestries are distributed along their chromosomes. This detailed view can help uncover ancestral connections that might otherwise remain hidden in broader chromosome-wide analyses. 
+</br>
+<br/><div id="chart7" </div>
+<script>
+var series7 =[{"data":[86.0,78.3,62.5,100.0,30.3,69.6,61.2,57.2,16.8,59.8,39.7,84.9,53.1,48.6,29.5,33.2],"name":"Amerindian"},{"data":[0.0,14.2,13.2,0.0,25.7,16.6,24.2,9.8,26.8,5.0,14.7,0.0,0.0,20.7,38.6,32.7],"name":"Baltic"},{"data":[0.0,0.0,0.0,0.0,43.9,11.0,14.6,18.3,40.1,0.0,42.0,0.0,0.0,18.8,28.4,0.0],"name":"West_Med"},{"data":[0.0,7.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.8,0.0,15.1,0.0,6.5,0.0,18.9],"name":"Siberian"},{"data":[14.0,0.0,10.8,0.0,0.0,2.8,0.0,0.0,0.0,1.5,3.5,0.0,19.9,0.0,0.0,3.1],"name":"South_Asian"},{"data":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,16.3,0.0,0.0,0.0,15.1,0.0,0.0,12.1],"name":"East_Asian"},{"data":[0.0,0.0,13.6,0.0,0.0,0.0,0.0,14.7,0.0,0.0,0.0,0.0,0.0,5.3,0.0,0.0],"name":"Red_Sea"},{"data":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11.9,0.0,3.4,0.0],"name":"West_Asian"}];
+var options7 = {
+series: series7,
+chart: {
+ type: 'bar',
+ height: 570,
+stacked: true,
+stackType: 'normal'
+},
+plotOptions: {
+bar: {
+horizontal: true,
+},
+},
+stroke: {
+width: 1,
+colors: ['#fff']
+},
+title: {
+text: 'Admixture results using Eurogenes+K13 and 13 populations'
+},
+yaxis: {
+max: 100,
+title: {
+text: 'Value'
+}
+},
+ colors: ['#ff4560', '#00e396', '#008ffb', '#feb019', '#775dd0', '#ff66c4', '#5a5a5a'],
+ xaxis: {
+categories: ['AE9361123_18','JQ2782482_18','QR7508457_18','DK5517113_19','KE6302165_19','RP1706725_19','FC9002928_20','QG3796212_20','EX7497238_21','FS6329961_22','FU1026249_23','KW3090986_24','MZ1901221_25','PH7856481_26','WA6026935_27','WZ6884169_28'],
+},
+tooltip: {
+ y: {
+ formatter: function (val) {
+ return val + "%"
+}
+ }
+},
+ fill: {
+ opacity: 1
+},
+legend: {
+position: 'top',
+ horizontalAlign: 'left',
+offsetX: 40
+}
+};
+var chart7 = new ApexCharts(document.querySelector("#chart7"), options7);
+chart7.render();;
+</script>
+<div align="center">
+    <h2 style="padding-top: 50px">Individual segment Cluster Information</h2><br />
+<div style="text-align:center">
+    The following table shows the 16 DNA segments for each of the 1 identified segment clusters.     </br></br>
+<button id="excelButtonIdOpposite">Download spreadsheet with segment clusters</button>
+</div>
+</div>
+
+
+</div>
+</div>
+<div style="position: relative; width: 1450px; margin:auto;" width="1450px" align="center">
+<div id="segmentClustersUsersTableOpposite" style="position: relative; width: 1450px; margin:auto;" width="1450px" align="center">
+<script>
+var tableDataSegmentClustersOpposite =[{"color":"#fffd1c","start":56785906,"cM":11.1,"snps":578,"popModelSnps":89,"segment_cluster":18,"chr":20,"url":"mailto:elderaponte4@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":11.1,"stop":59703487,"kit":"AE9361123","name":"Dalma GimA_nez","matchurl":"..\/matches\/GEDmatch_AE9361123.html","group_":7,"email":"elderaponte4@gmail.com"},{"color":"#fffd1c","start":56732801,"cM":11.5,"snps":600,"popModelSnps":96,"segment_cluster":18,"chr":20,"url":"mailto:burkelandia@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":11.5,"stop":59756571,"kit":"JQ2782482","name":"Guillermo Diaz Lara","matchurl":"..\/matches\/GEDmatch_JQ2782482.html","group_":7,"email":"burkelandia@gmail.com"},{"color":"#fffd1c","start":56335741,"cM":13.3,"snps":678,"popModelSnps":108,"segment_cluster":18,"chr":20,"url":"mailto:izabel.sreis@hotmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":13.3,"stop":59778224,"kit":"QR7508457","name":"Alexandrina Maria de Lima","matchurl":"..\/matches\/GEDmatch_QR7508457.html","group_":7,"email":"izabel.sreis@hotmail.com"},{"color":"#58ff58","start":56785906,"cM":11.4,"snps":596,"popModelSnps":96,"segment_cluster":19,"chr":20,"url":"mailto:sebastian.faundes@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":11.4,"stop":59778224,"kit":"DK5517113","name":"Zaddy MuA_oz","matchurl":"..\/matches\/GEDmatch_DK5517113.html","group_":7,"email":"sebastian.faundes@gmail.com"},{"color":"#58ff58","start":56744428,"cM":10.8,"snps":558,"popModelSnps":86,"segment_cluster":19,"chr":20,"url":"mailto:labmitch@hotmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":10.8,"stop":59622935,"kit":"KE6302165","name":"*Mitchell Dupre","matchurl":"..\/matches\/GEDmatch_KE6302165.html","group_":7,"email":"labmitch@hotmail.com"},{"color":"#58ff58","start":57124772,"cM":11.2,"snps":572,"popModelSnps":93,"segment_cluster":19,"chr":20,"url":"mailto:027betz@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":11.2,"stop":59974132,"kit":"RP1706725","name":"Olinda Forsythe","matchurl":"..\/matches\/GEDmatch_RP1706725.html","group_":7,"email":"027betz@gmail.com"},{"color":"#ff4e50","start":56313056,"cM":13.3,"snps":686,"popModelSnps":109,"segment_cluster":20,"chr":20,"url":"mailto:yolicast@hotmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":13.3,"stop":59760043,"kit":"FC9002928","name":"MarA_a Yolanda Cruz","matchurl":"..\/matches\/GEDmatch_FC9002928.html","group_":7,"email":"yolicast@hotmail.com"},{"color":"#ff4e50","start":56785906,"cM":11.4,"snps":594,"popModelSnps":96,"segment_cluster":20,"chr":20,"url":"mailto:orsiidalia@hotmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":11.4,"stop":59778224,"kit":"QG3796212","name":"Adriana Saldana Orsi","matchurl":"..\/matches\/GEDmatch_QG3796212.html","group_":7,"email":"orsiidalia@hotmail.com"},{"color":"#ffcdff","start":56775241,"cM":10.5,"snps":546,"popModelSnps":84,"segment_cluster":21,"chr":20,"url":"mailto:ingraydotcom@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":22.6,"stop":59592190,"kit":"EX7497238","name":"Ineza Grabowska","matchurl":"..\/matches\/GEDmatch_EX7497238.html","group_":7,"email":"ingraydotcom@gmail.com"},{"color":"#ffab95","start":56785906,"cM":10.7,"snps":562,"popModelSnps":85,"segment_cluster":22,"chr":20,"url":"mailto:kitsadministrados@nuestraprimerapagina.org","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":10.7,"stop":59632270,"kit":"FS6329961","name":"Magdalena Romero","matchurl":"..\/matches\/GEDmatch_FS6329961.html","group_":7,"email":"kitsadministrados@nuestraprimerapagina.org"},{"color":"#ffedff","start":51884213,"cM":24.4,"snps":1442,"popModelSnps":243,"segment_cluster":23,"chr":20,"url":"mailto:brenonovaesbraga@gmail.com","bar":[1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":24.4,"stop":59717569,"kit":"FU1026249","name":"Breno","matchurl":"..\/matches\/GEDmatch_FU1026249.html","group_":7,"email":"brenonovaesbraga@gmail.com"},{"color":"#ffff44","start":57125934,"cM":10.2,"snps":532,"popModelSnps":87,"segment_cluster":24,"chr":20,"url":"mailto:ancestros1982@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":10.2,"stop":59762217,"kit":"KW3090986","name":"*Mechi","matchurl":"..\/matches\/GEDmatch_KW3090986.html","group_":7,"email":"ancestros1982@gmail.com"},{"color":"#2effff","start":56037695,"cM":10.9,"snps":603,"popModelSnps":97,"segment_cluster":25,"chr":20,"url":"mailto:valerie@dnadigger.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1],"total_cM":10.9,"stop":59187226,"kit":"MZ1901221","name":"Luis Angel B","matchurl":"..\/matches\/GEDmatch_MZ1901221.html","group_":7,"email":"valerie@dnadigger.com"},{"color":"#3eedff","start":56531928,"cM":11.6,"snps":581,"popModelSnps":87,"segment_cluster":26,"chr":20,"url":"mailto:zaneyc81@hotmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":11.6,"stop":59592190,"kit":"PH7856481","name":"Rhonda Clayton","matchurl":"..\/matches\/GEDmatch_PH7856481.html","group_":7,"email":"zaneyc81@hotmail.com"},{"color":"#fffd1c","start":55664349,"cM":10.4,"snps":606,"popModelSnps":94,"segment_cluster":27,"chr":20,"url":"mailto:jmenneray01@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1],"total_cM":10.4,"stop":58886310,"kit":"WA6026935","name":"jonathan","matchurl":"..\/matches\/GEDmatch_WA6026935.html","group_":7,"email":"jmenneray01@gmail.com"},{"color":"#58ff58","start":56775241,"cM":10.5,"snps":546,"popModelSnps":83,"segment_cluster":28,"chr":20,"url":"mailto:vadym.sem18@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1],"total_cM":10.5,"stop":59592190,"kit":"WZ6884169","name":"*McSamson","matchurl":"..\/matches\/GEDmatch_WZ6884169.html","group_":7,"email":"vadym.sem18@gmail.com"}]
+//generate bar chart
+var barFormatter = function(cell, formatterParams, onRendered){
+onRendered(function(){ //instantiate sparkline after the cell element has been aded to the DOM
+$(cell.getElement()).sparkline(cell.getValue(), {width:"100%", type:"bar", barWidth:5, disableTooltips:true});
+});
+};
+
+
+var segmentclusterstable = new Tabulator("#segmentClustersUsersTableOpposite", {
+initialSort:[
+{column:"segment_cluster", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1300px",
+    layout:"fitDataFill",
+  rowFormatter:function(row){  
+           row.getElement().style.backgroundColor = row.getData().color;
+    },
+    responsiveLayout:"collapse",
+    groupBy:"group_",
+    columns:[
+   {title:"Segment cluster", field:"cluster", width:100, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for cluster", formatterParams:{
+	 urlField:"cluster_url",
+    labelField:"cluster",
+    target:"_blank",
+            }},
+        {title:"Cluster", field:"segment_cluster", align:"center",width:120, sorter:"number"},
+        {title:"Chr", field:"chr", align:"center",width:70, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Start", field:"start", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Stop", field:"stop", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+{title:"Segment representation", field:"bar", width:250, formatter:barFormatter},
+        {title:"SNP count", field:"snps", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Admixture SNP count", field:"popModelSnps", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+   {title:"Match", field:"matchurl", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for name", formatterParams:{
+	 urlField:"matchurl",
+    labelField:"name",
+    target:"_blank",
+            }},
+   {title:"Email", field:"email", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for email", formatterParams:{
+	 urlField:"url",
+    labelField:"email",
+    target:"_blank",
+            }},
+        {title:"Kitnumber", field:"kit", align:"center",width:100},
+        {title:"cM", field:"cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"Total cM", field:"total_cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Total cM", headerFilterFunc:">="},
+    ],
+});
+segmentclusterstable.setData(tableDataSegmentClustersOpposite);
+
+document.getElementById("excelButtonIdOpposite").addEventListener("click", function(){
+segmentclusterstable.download("xlsx", "segmentclusterstable.xlsx", {sheetName:"SegmentClusters"});
+});
+</script>
+<br/><br/><br/>
+
+</div></div></body></html>

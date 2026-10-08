@@ -1,0 +1,162 @@
+<html class="genetic-affairs">
+<head>
+    <meta charset="utf-8"/>
+    <title>Genetic Affairs - DNA match report *hugo</title>
+    <link href="geneticaffairs.css" rel="stylesheet">
+    <link href="geneticaffairs_tree.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.1.2/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="page-header">
+    <div>
+        <h1 class="title">DNA match report</h1>
+		<h2 class="subtitle">For: *hugo CZ7495367 GEDmatch September 10 2026 </h2>
+    </div>
+	<div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.2/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.full.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ideogram@1.15.0/dist/js/ideogram.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script>
+
+      
+
+        function createElipsisText(text){
+            var maxStringlength=20;
+            if(text.length < maxStringlength){return text}else{
+                return text.slice(0,maxStringlength) + "...";
+            }
+        }
+
+        (function () {
+            if (typeof NodeList.prototype.forEach === "function") return false;
+            NodeList.prototype.forEach = Array.prototype.forEach;
+        })();
+
+
+		
+          var globalInfo = {total_number_dna_matches: 1, min_cm: 10, max_cm: 10, min_match_shared_cm: 0, min_cluster_size:1,triangulated_groups:false}
+		var commonAncestorClusters = []
+		var autoPedigreeClusters = []
+		var commonAncestors = []
+
+
+
+}
+
+        document.querySelector(".global-clusters_wrapper").innerHTML = getClusterGlobalData();
+
+    </script>
+<div style="position: relative; width: 750px; margin:auto;" width="750px" align="center">
+<div align="center">
+
+</br></br><h2>Information about DNA match</h2>
+</div>
+DNA match *hugo shares a total of 10.1 cM of which 1 segment(s) are 10 cM or larger. The following segment(s) larger than or equal to 10 cM are shared: </br></br></br>chromosome <b>8</b> :<b> 10.1 cM</b>, start: 61151574 end: 72097657 and 1540 SNPs</br></br></br></br>
+
+
+<br>
+</div>
+<div style="position: relative; width: 750px; margin:auto;" width="750px" align="center">
+<div align="center">
+
+<h2>Explanation of DNA match report</h2>
+</div>
+<p>For each match that was retrieved an AutoCluster report is created using the targeted clustering approach. For this analysis, we take the shared matches for the concerned match. Next, we download the shared matches of these shared matches. The resulting matches are used for the AutoCluster report. They represent the clusters for which the match is a member.<br><br> Next, we provide the results for the <a href="https://www.geneticaffairs.com/features-autosegment.html">AutoSegment</a> analysis that is performed using overlapping segments for the match. To verify these overlapping segments, we use shared match data for FamilyTreeDNA matches. Overlapping segments for which the linked DNA matches are not shared match are not taken into account. For the GEDmatch procedure, we employ the triangulation data from GEDmatch. <br><br>
+
+</div>
+
+<div style="position: relative; width: 1150px; margin:auto; width:1150px; text-align:center"><div id="segments">
+<h2>Chromosome segments</h2>
+</div>
+
+<script type="text/javascript">
+
+var config = {
+container: "#segments",organism: 'human',
+chrHeight: 900,
+chrMargin: 2,
+annotations:[{"stop":72097657,"color":"#ffa07a","name":"segment not in segment cluster sharing 10.1 cM with *hugo","start":61151574,"chr":"8"},{"stop":72097657,"color":"#ffa07a","name":"segment not in segment cluster sharing 10.1 cM with *hugo","start":61151574,"chr":"8"}],
+ annotationsLayout: 'overlay',
+orientation: 'horizontal'
+ };
+var ideogram = new Ideogram(config);
+ </script>
+</div>
+<div style="position: relative; width: 1150px; margin:auto; width:1150px; text-align:center">
+<div align="center">
+
+<h2>Explanation of chromosome browser</h2>
+</div>
+<p>A chromosome browser provides a graphical representation of the segments that are shared with this DNA match. Before we visualize the shared DNA segments we perform a clustering to group segments that are overlapping. Next, these segment clusters are visualized using a certain color. Segments that are not present in an segment cluster are represented by orange segments. In addition to the graphical representation a table is available that contains the detailed information for the segment clusters as well as a table with the segments that are not clustered together.<br><br>
+
+</div>
+
+<div align="center">
+    <h2 style="padding-top: 50px">GEDmatch segments not in segment clusters for match *hugo</h2><br />
+</div>
+
+
+<div style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<div id="users-table_lonely" style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<script>
+var tableData_lonely =[{"note":"","color":"","start":61151574,"cM":10.1,"roh":"","snps":1540,"chr":8,"url":"mailto:hugomidon85@gmail.com","total_cM":10.1,"dtc":"GEDmatch","stop":72097657,"name":"*hugo","matchurl":"GEDmatch_CZ7495367.html","group_":"","email":"hugomidon85@gmail.com"}]
+//generate bar chart
+var barFormatter = function(cell, formatterParams, onRendered){
+onRendered(function(){ //instantiate sparkline after the cell element has been aded to the DOM
+$(cell.getElement()).sparkline(cell.getValue(), {width:"100%", type:"bar", barWidth:5, disableTooltips:true});
+});
+};
+
+
+var table_lonely = new Tabulator("#users-table_lonely", {
+initialSort:[
+{column:"start", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1300px",
+    layout:"fitDataFill",
+  rowFormatter:function(row){  
+           row.getElement().style.backgroundColor = row.getData().color;
+    },
+    responsiveLayout:"collapse",
+    columns:[
+        {title:"Cluster", field:"cluster", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Segment Cluster", field:"group_", align:"center",width:160, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Chr", field:"chr", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Start", field:"start", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Stop", field:"stop", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+{title:"Segment representation", field:"bar", width:250, formatter:barFormatter},
+        {title:"SNP count", field:"snps", align:"center",width:120, headerFilter:true, headerFilterPlaceholder:"Search"},
+   {title:"Match", field:"matchurl", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for name", formatterParams:{
+	 urlField:"matchurl",
+    labelField:"name",
+    target:"_blank",
+            }},
+   {title:"Email", field:"email", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for email", formatterParams:{
+	 urlField:"url",
+    labelField:"email",
+    target:"_blank",
+            }},
+        {title:"cM", field:"cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"Total cM", field:"total_cM", align:"center",width:120, headerFilter:"number", headerFilterPlaceholder:"Total cM", headerFilterFunc:">="},
+        {title:"Notes", field:"note", width:200, headerFilter:true, headerFilterPlaceholder:"Search for notes"},
+    ],
+});
+table_lonely.setData(tableData_lonely);
+</script>
+</div>
+<footer>
+<aside>September 10 2026</aside>
+<a href="https://www.linkedin.com/in/evert-jan-blom/" rel="author">Evert-Jan Blom</a>, d3.js template by Mike Bostock
+</footer>
+</body>
+</html>

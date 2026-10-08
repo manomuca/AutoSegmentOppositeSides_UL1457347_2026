@@ -1,0 +1,768 @@
+<html class="genetic-affairs">
+<head>
+    <meta charset="utf-8"/>
+    <title>Genetic Affairs - DNA match report Jessica</title>
+    <link href="geneticaffairs.css" rel="stylesheet">
+    <link href="geneticaffairs_tree.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.1.2/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="page-header">
+    <div>
+        <h1 class="title">DNA match report</h1>
+		<h2 class="subtitle">For: Jessica NJ5052929 GEDmatch September 10 2026 </h2>
+    </div>
+	<div>
+    </div>
+</div>
+
+<div class="order-by-selector">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+        <g fill="none" fill-rule="nonzero" opacity=".6">
+            <path stroke="#000" d="M6.5 7.5h14v14h-14zM23.5 19.5h10v10h-10zM11.5 25.5h6v6h-6zM24.5 8.5h4v4h-4z" />
+        </g>
+    </svg>
+
+    <p class="order-by-selector-lable">Order DNA Matches by:
+        <select id="order" class="order-by-selector-options">
+            <option selected value="name">Name</option>
+            <option value="count"># of shared matches</option>
+            <option value="group">Cluster</option>
+            <option value="cM">Shared cMs with the tester</option>
+        </select>
+</div>
+
+<div class="chart-section">
+    <div id="chart-container"></div>
+    <div id="chart-legend-container"></div>
+
+
+</div>
+<div class="global-clusters_wrapper">
+</div>
+
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.2/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.full.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ideogram@1.15.0/dist/js/ideogram.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script>
+
+      
+
+        function createElipsisText(text){
+            var maxStringlength=20;
+            if(text.length < maxStringlength){return text}else{
+                return text.slice(0,maxStringlength) + "...";
+            }
+        }
+
+        (function () {
+            if (typeof NodeList.prototype.forEach === "function") return false;
+            NodeList.prototype.forEach = Array.prototype.forEach;
+        })();
+
+
+		
+		var json = {"nodes":[{"note":"thaispedroso9@hotmail.com ","side":"","kitnum":"AC6176045","largestSegment":23.9,"index":0,"cM":59.4,"url":"GEDmatch_AC6176045.html","segments":"[{\"chromosome\":15,\"start\":81179553,\"seg_cm\":14.2,\"end\":92013382,\"num_snps\":1778},{\"chromosome\":20,\"start\":15624156,\"seg_cm\":15.7,\"end\":35028465,\"num_snps\":2463},{\"chromosome\":20,\"start\":41479897,\"seg_cm\":29.5,\"end\":56177066,\"num_snps\":3087}]","treeId":"","dtc":"GEDmatch","avgSegment":15.6,"nrSegments":2,"name":"Thais Pedroso","treeDesc":"","icw_cM":31.2,"icw":3,"group_":"Cluster 1","group":1},{"note":"dra.maianavieira@gmail.com ","side":"","kitnum":"CA6917206","largestSegment":34.5,"index":1,"cM":26.9,"url":"GEDmatch_CA6917206.html","segments":"[{\"chromosome\":15,\"start\":68653557,\"seg_cm\":26.9,\"end\":91617539,\"num_snps\":3969}]","treeId":"","dtc":"GEDmatch","avgSegment":34.5,"nrSegments":1,"name":"Elenite AssunA_A_o Soares","treeDesc":"","icw_cM":34.5,"icw":4,"group_":"Cluster 1","group":1},{"note":"pedroarruda.ofurtado@gmail.com ","side":"","kitnum":"CM1719915","largestSegment":37.0,"index":2,"cM":33.3,"url":"GEDmatch_CM1719915.html","segments":"[{\"chromosome\":15,\"start\":63207340,\"seg_cm\":33.3,\"end\":91411656,\"num_snps\":1473}]","treeId":"","dtc":"GEDmatch","avgSegment":37.0,"nrSegments":1,"name":"Pedro Arruda","treeDesc":"","icw_cM":37.0,"icw":6,"group_":"Cluster 1","group":1},{"note":"wiana_aguiar@hotmail.com ","side":"","kitnum":"PN1916344","largestSegment":20.8,"index":3,"cM":34.4,"url":"GEDmatch_PN1916344.html","segments":"[{\"chromosome\":9,\"start\":85787718,\"seg_cm\":20.4,\"end\":102211757,\"num_snps\":2713},{\"chromosome\":12,\"start\":11908529,\"seg_cm\":14.0,\"end\":20280672,\"num_snps\":1523}]","treeId":"","dtc":"GEDmatch","avgSegment":20.8,"nrSegments":1,"name":"Wiana","treeDesc":"","icw_cM":20.8,"icw":1,"group_":"Cluster 2","group":2},{"note":"prof.andrehenrique@gmail.com ","side":"","kitnum":"WE8364628","largestSegment":11.4,"index":4,"cM":40.9,"url":"GEDmatch_WE8364628.html","segments":"[{\"chromosome\":15,\"start\":62427364,\"seg_cm\":13.4,\"end\":71437710,\"num_snps\":1406},{\"chromosome\":17,\"start\":21503147,\"seg_cm\":10.6,\"end\":33642561,\"num_snps\":1080},{\"chromosome\":20,\"start\":57981306,\"seg_cm\":16.8,\"end\":62884632,\"num_snps\":1038}]","treeId":"","dtc":"GEDmatch","avgSegment":11.4,"nrSegments":1,"name":"Arthur Gael Marques Albuquerque","treeDesc":"","icw_cM":11.4,"icw":4,"group_":"Cluster 1","group":1},{"note":"betolosuk@gmail.com ","side":"","kitnum":"WQ2064597","largestSegment":19.1,"index":5,"cM":30.2,"url":"GEDmatch_WQ2064597.html","segments":"[{\"chromosome\":15,\"start\":61178032,\"seg_cm\":14.9,\"end\":71109147,\"num_snps\":1387},{\"chromosome\":18,\"start\":6653590,\"seg_cm\":15.3,\"end\":10390247,\"num_snps\":680}]","treeId":"","dtc":"GEDmatch","avgSegment":15.0,"nrSegments":3,"name":"Carlos Machado","treeDesc":"","icw_cM":45.1,"icw":4,"group_":"Cluster 1","group":1},{"note":"projetodna@outlook.pt ","side":"","kitnum":"XN5601537","largestSegment":19.9,"index":6,"cM":19.9,"url":"GEDmatch_XN5601537.html","segments":"[{\"chromosome\":15,\"start\":61913884,\"seg_cm\":19.9,\"end\":79347269,\"num_snps\":2623}]","treeId":"","dtc":"GEDmatch","avgSegment":19.9,"nrSegments":1,"name":"Samuel Mesquita","treeDesc":"","icw_cM":19.9,"icw":5,"group_":"Cluster 1","group":1},{"note":"jessicaemfarias@gmail.com ","side":"","kitnum":"NJ5052929","index":7,"cM":68.3,"url":"GEDmatch_NJ5052929.html","segments":"[{\"chromosome\":4,\"start\":90062409,\"seg_cm\":14.8,\"end\":109959957,\"num_snps\":2390},{\"chromosome\":12,\"start\":11397876,\"seg_cm\":15.1,\"end\":20243244,\"num_snps\":1433},{\"chromosome\":15,\"start\":61084728,\"seg_cm\":38.4,\"end\":92079104,\"num_snps\":4880}]","treeId":"","dtc":"GEDmatch","name":"Jessica","treeDesc":"","icw":7,"group_":"Cluster 1","group":1}],"tree":[],"links":[{"source":1,"value":250,"target":0},{"source":2,"value":250,"target":0},{"source":7,"value":250,"target":0},{"source":2,"value":250,"target":1},{"source":6,"value":250,"target":1},{"source":7,"value":250,"target":1},{"source":4,"value":250,"target":2},{"source":5,"value":250,"target":2},{"source":6,"value":250,"target":2},{"source":7,"value":250,"target":2},{"source":7,"value":250,"target":3},{"source":5,"value":250,"target":4},{"source":6,"value":250,"target":4},{"source":7,"value":250,"target":4},{"source":6,"value":250,"target":5},{"source":7,"value":250,"target":5},{"source":7,"value":250,"target":6}],"clusters":[{"Cluster 1":"7 members"},{"Cluster 2":"1 members"}]}
+		var tableData = json.nodes
+          var globalInfo = {total_number_dna_matches: 8, min_cm: 19, max_cm: 68, min_match_shared_cm: 0, min_cluster_size:1,triangulated_groups:false}
+		var commonAncestorClusters = []
+		var autoPedigreeClusters = []
+		var commonAncestors = []
+
+		
+		
+		
+
+        var margin = {top: 0, right: 0, bottom: 0, left: 0};
+        var width = document.getElementById('chart-container').offsetWidth -200;
+        var height = width;
+        var legend_start_x = width
+        var legend_width = width - legend_start_x - (margin.right + margin.left);
+
+        // Define the div for the tooltip
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        var x = d3.scale.ordinal().rangeBands([0, legend_start_x]),
+            z = d3.scale.linear().domain([0, 1000]).clamp(true),
+            c = d3.scale.category10().domain(d3.range(10));
+
+            var svg = d3.select("#chart-container").append("svg")
+            .attr("id", "chart")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
+
+        var legendElement = d3.select("#chart-legend-container").append("svg")
+            .attr("id", "chart-legend");
+
+        var matrix = [],
+            nodes = json.nodes,
+            n = nodes.length;
+
+        // Compute index per node.
+        nodes.forEach(function (node, i) {
+            node.index = i;
+            node.count = 0;
+            matrix[i] = d3.range(n).map(function (j) {
+                return {x: j, y: i, z: 0};
+            });
+        });
+
+        // Convert links to matrix; count character occurrences.
+        json.links.forEach(function (link) {
+            matrix[link.source][link.target].z += link.value;
+            matrix[link.target][link.source].z += link.value;
+            matrix[link.source][link.source].z += link.value;
+            matrix[link.target][link.target].z += link.value;
+            nodes[link.source].count += link.value;
+            nodes[link.target].count += link.value;
+        });
+
+        var groups = d3.nest()
+            .key(function (d) {
+                return d.group;
+            })
+            .entries(nodes);
+
+        groups.forEach(function (d, i) {
+            var str = "";
+            var tmpX;
+            var tmpY;
+
+            var group_annotation = d.key;
+            for (var ii = 0; ii < json.clusters.length; ii++) {
+                var cluster = json.clusters[ii];
+                Object.keys(cluster).forEach(function (key) {
+                filt_key = key.replace(" (A)", "")    
+                filt_key = filt_key.replace(" (F)", "");    
+                filt_key = filt_key.replace(" (T)", "");    
+                    
+                 if (filt_key === "Cluster " + d.key) {    
+                   group_annotation = key + ": " + cluster[key]; 
+                    } 
+                })
+            }
+            legendElement.append('rect')
+                 .attr('x', 0)
+                .attr('y', (i * 22))
+				.attr('class', 'legend-rect')
+				.attr('width', 18)
+				.attr('height', 18)
+				.style('fill', function() { return c(d.key); })
+				.style("fill-opacity", 0.5)
+				.style('stroke', function() { return c(d.key); })
+               
+                .on("mouseover", function () {
+                    d3.selectAll(".cluster_" + d.key).style("fill-opacity", 1);
+                    div.transition()
+                        .duration(300)
+                        .style("opacity", 1);
+                    var tiptext = "<b>Cluster "+d.key+"</b></br>";
+					
+                    for (var iii = 0; iii < json.nodes.length; iii++) {
+                        var thisnode = json.nodes[iii];
+                        if (thisnode.group == d.key)
+                            tiptext += thisnode.name + "<br/>";
+                    }
+                    ;
+					div.html("<P ALIGN=LEFT>"+tiptext+"</P>")
+						.style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY) + "px");
+                })
+                .on("mouseout", function () {
+                    d3.selectAll(".cluster_" + d.key).style("fill-opacity", function (d) {
+                    return z(d.z) + 0.5;
+                });
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+
+            legendElement.append('text')
+                .attr('x', 50)
+                .attr('y', (i * 22)+ 15)
+                .attr("class", "legend-text")
+                .on("mouseover", function () {
+                    d3.selectAll(".cluster_" + d.key).style("fill-opacity", 1);
+                    div.transition()
+                        .duration(300)
+                        .style("opacity", 1);
+
+                    var tiptext = "";
+                    for (var iii = 0; iii < json.nodes.length; iii++) {
+                        var thisnode = json.nodes[iii];
+                        if (thisnode.group == d.key)
+                            tiptext += thisnode.name + "<br/>";
+                    }
+                    ;
+                    div.html("<P ALIGN=LEFT><b>Cluster "+d.key+"</b></br>"+tiptext+"</P>")
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY + 15) + "px");
+                })
+                .on("mouseout", function () {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    d3.selectAll(".cluster_" + d.key).style("fill-opacity", function(d){return z(d.z) + 0.5;});
+                })
+                .text(group_annotation);
+        });
+
+
+        var cellwidth;
+        var maxcellwidth = 15;
+
+        // Precompute the orders.
+        var orders = {
+            name: d3.range(n).sort(function (a, b) {
+                return d3.ascending(nodes[a].name, nodes[b].name);
+            }),
+            count: d3.range(n).sort(function (a, b) {
+                return nodes[b].count - nodes[a].count;
+            }),
+            group: d3.range(n).sort(function (a, b) {
+                return d3.ascending(nodes[a].group, nodes[b].group);
+            }),
+            cM: d3.range(n).sort(function (a, b) {
+                return nodes[b].cM - nodes[a].cM;
+            }),
+            index: d3.range(n).sort(function (a, b) {
+                return nodes[b].index + nodes[a].index;
+            })
+
+        };
+
+        // The default sort order.
+        x.domain(orders.name);
+
+        svg.append("rect")
+            .attr("class", "background")
+            .attr("width", width)
+            .attr("height", width);
+
+        var row = svg.selectAll(".row")
+            .data(matrix)
+            .enter().append("g")
+            .attr("class", "row")
+            .attr("transform", function (d, i) {
+                return "translate(0," + x(i) + ")";
+            })
+            .each(row);
+
+        row.append("line")
+            .attr("x2", width  );
+        row.append("text")
+            .attr("x", -6)
+            .attr("y", x.rangeBand() / 2)
+            .attr("dy", ".32em")
+            .attr("font-size", Math.round(cellwidth - 1) + "px")
+            .attr("text-anchor", "end")
+            .attr("class", "row-text")
+            .text(function (d, i) {
+                return createElipsisText(nodes[i].name);
+            });
+
+        var column = svg.selectAll(".column")
+            .data(matrix)
+            .enter().append("g")
+            .attr("class", "column")
+            .attr("transform", function (d, i) {
+                return "translate(" + x(i) + ")rotate(-90)";
+            });
+
+        column.append("line")
+            .attr("x1", -width  );
+
+        column.append("text")
+            .attr("x", 6)
+            .attr("y", x.rangeBand() / 2)
+            .attr("dy", ".32em")
+            .attr("font-size", Math.round(cellwidth - 1) + "px")
+            .attr("text-anchor", "start")
+            .attr("class", "column-text")
+            .text(function (d, i) {
+                return createElipsisText(nodes[i].name);
+            });
+
+        function row(row) {
+            var isCalsterCell =   function(d){return nodes[d.x].group == nodes[d.y].group;};
+            var cell = d3.select(this).selectAll(".cell")
+                .data(row.filter(function (d) {
+                    return d.z;
+                }))
+               .enter()
+               .append("g")
+               cell.on("mouseover", mouseover)
+               .on("mouseout", mouseout)
+                .append("rect")
+                .attr("class", "cell")
+                .attr("class", function (d) {
+                    return nodes[d.x].group == nodes[d.y].group ? "cell cluster_" + nodes[d.x].group : "cell";
+                })
+                .attr("x", function (d) {
+                    return x(d.x);
+                })
+                .attr("width", x.rangeBand())
+                .attr("height", x.rangeBand())
+                .style("fill-opacity", function (d) {
+                    return isCalsterCell(d)? z(d.z) + 0.5 : 0.15;
+                })
+			
+				.style("fill", function(d) { 
+					return nodes[d.x].group == nodes[d.y].group ? c(nodes[d.x].group) : null; 
+				})
+				
+cell
+.append("path")
+.filter(function(d) { return ((d.z % 266 == 0) | d.z ==266) })
+.attr("d", "M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z")
+.attr("fill", "#030104")
+.attr("opacity", function(d) {  return  z(d.z); })
+.attr("class", "icon")
+.attr("width", x.rangeBand())
+.attr("height", x.rangeBand())
+.attr("transform", function(d, i) {
+				var scale = (x.rangeBand()/((this.getBBox()['height']+this.getBBox()['width'])/2)*0.9);
+		var marginTop = (x.rangeBand()-(this.getBBox()['height']*scale))/2;
+		var marginLeft = (x.rangeBand()-(this.getBBox()['width']*scale))/2;
+			return "translate(" + (x(d.x)+marginLeft) + ", " + marginTop + ")scale("+ scale +")";
+	})
+cell
+.append("path")
+.filter(function(d) { return ((d.z % 277 == 0) | d.z ==277) })
+.attr("d", "M 23.1 41.7 L 23.1 54.6 A 24.649 24.649 0 0 1 22.809 58.522 Q 22.166 62.506 20.1 64.95 Q 17.1 68.5 11.4 68.5 A 14.44 14.44 0 0 1 7.971 68.116 A 9.736 9.736 0 0 1 3 65.25 A 9.246 9.246 0 0 1 1.231 62.327 Q 0 59.197 0 54.2 L 0 12 Q 0 8.8 0.85 6.45 A 10.274 10.274 0 0 1 1.812 4.456 A 7.95 7.95 0 0 1 3.3 2.7 Q 4.9 1.3 6.9 0.65 Q 8.9 0 11.4 0 L 44.2 0 A 29.994 29.994 0 0 1 47.229 0.143 Q 50.337 0.459 52.292 1.48 A 7.838 7.838 0 0 1 52.85 1.8 A 5.661 5.661 0 0 1 55.193 4.851 Q 55.7 6.317 55.7 8.3 A 12.343 12.343 0 0 1 55.517 10.508 Q 55.3 11.697 54.827 12.609 A 5.118 5.118 0 0 1 53.25 14.45 A 7.408 7.408 0 0 1 51.303 15.41 Q 49.38 16.059 46.496 16.175 A 32.351 32.351 0 0 1 45.2 16.2 L 23.1 16.2 L 23.1 27.9 L 40.7 27.9 A 30.387 30.387 0 0 1 42.606 27.956 Q 43.533 28.015 44.331 28.134 A 14.41 14.41 0 0 1 45.25 28.3 Q 46.929 28.663 48.031 29.479 A 5.213 5.213 0 0 1 48.25 29.65 Q 49.4 30.6 49.85 31.95 A 7.652 7.652 0 0 1 50.124 33.068 Q 50.223 33.642 50.266 34.308 A 16.885 16.885 0 0 1 50.3 35.4 A 7.209 7.209 0 0 1 50.068 37.291 A 4.726 4.726 0 0 1 47.8 40.25 A 8.309 8.309 0 0 1 45.945 41.015 Q 43.581 41.7 39.8 41.7 L 23.1 41.7 Z")
+.attr("fill", "#030104")
+.attr("opacity", function(d) {  return  z(d.z); })
+.attr("class", "icon")
+.attr("width", x.rangeBand())
+.attr("height", x.rangeBand())
+.attr("transform", function(d, i) {
+				var scale = (x.rangeBand()/((this.getBBox()['height']+this.getBBox()['width'])/2)*0.9);
+		var marginTop = (x.rangeBand()-(this.getBBox()['height']*scale))/2;
+		var marginLeft = (x.rangeBand()-(this.getBBox()['width']*scale))/2;
+			return "translate(" + (x(d.x)+marginLeft) + ", " + marginTop + ")scale("+ scale +")";
+	})
+cell
+.append("path")
+.filter(function(d) { return ((d.z % 288== 0) | d.z ==288) })
+.attr("d", "M 65.8 8.1 L 60.5 8.1 L 60.5 66.4 Q 60.5 67.9 59 67.9 L 51.7 67.9 A 2.974 2.974 0 0 1 50.654 67.724 Q 49.918 67.45 49.432 66.747 A 3.29 3.29 0 0 1 49.4 66.7 L 15.5 16.6 L 15.5 60 L 23.8 60 Q 25.3 60 25.3 61.5 L 25.3 66.4 Q 25.3 67.9 23.8 67.9 L 1.5 67.9 Q 0 67.9 0 66.4 L 0 61.5 Q 0 60 1.5 60 L 6.8 60 L 6.8 8.1 L 1.5 8.1 Q 0 8.1 0 6.6 L 0 1.5 Q 0 0 1.5 0 L 16.2 0 A 2.591 2.591 0 0 1 18.207 0.926 A 3.881 3.881 0 0 1 18.5 1.3 L 51.8 51.9 L 51.8 8.1 L 46.5 8.1 Q 45 8.1 45 6.6 L 45 1.5 Q 45 0 46.5 0 L 65.8 0 Q 67.3 0 67.3 1.5 L 67.3 6.6 Q 67.3 8.1 65.8 8.1 Z")
+.attr("fill", "red")
+.attr("opacity", function(d) {  return  z(d.z); })
+.attr("class", "icon")
+.attr("width", x.rangeBand())
+.attr("height", x.rangeBand())
+.attr("transform", function(d, i) {
+				var scale = (x.rangeBand()/((this.getBBox()['height']+this.getBBox()['width'])/2)*0.9);
+		var marginTop = (x.rangeBand()-(this.getBBox()['height']*scale))/2;
+		var marginLeft = (x.rangeBand()-(this.getBBox()['width']*scale))/2;
+			return "translate(" + (x(d.x)+marginLeft) + ", " + marginTop + ")scale("+ scale +")";
+	})
+            cellwidth = (x.rangeBand() > maxcellwidth) ? maxcellwidth : x.rangeBand();
+}
+
+        function mouseover(p) {
+            d3.selectAll(".row text").classed("active", function (d, i) {
+                return i == p.y;
+            });
+            d3.selectAll(".column text").classed("active", function (d, i) {
+                return i == p.x;
+            });
+            div.transition()
+                .duration(300)
+                .style("opacity", 1);
+
+
+            var ynode = p.y;
+            var xnode = p.x;
+            d3.selectAll(".cluster_" + json.nodes[ynode].group).style("fill-opacity", 1);
+            d3.selectAll(".cluster_" + json.nodes[xnode].group).style("fill-opacity", 1);
+            div.transition()
+                .duration(300)
+                .style("opacity", 1);
+            var tip_members_text = "";
+			var tip_cluster_text = "";
+			var tip_cluster_members_text = "";
+			var max_cluster = 0;
+			var tip_members_text_common_ancestor = "";
+			var commonSurnames = "";
+
+			var clusters = new Set();
+			var sorted_clusters = new Set();
+			
+			for(var b=0; b<commonAncestors.length; b++){
+			var x_present = false;
+			var y_present = false;
+			var commonAncestor = commonAncestors[b];
+			var ancestor = commonAncestor.name;
+			for(var bb=0; bb<commonAncestors.length; bb++){
+			var member = commonAncestor.members[bb];
+			if(member==xnode){
+			x_present= true;
+			}
+			if(member==ynode){
+			y_present= true;
+			}
+			}
+			if(x_present & y_present){
+			tip_members_text_common_ancestor+=ancestor+"</br>";
+			}
+			}
+			
+			
+			for (var iii = 0; iii < json.nodes.length; iii++) {
+                var thisnode = json.nodes[iii];
+                if (thisnode.group == json.nodes[ynode].group || thisnode.group == json.nodes[xnode].group){
+					if(thisnode.group>max_cluster){
+					max_cluster = thisnode.group;
+					}
+					clusters.add(thisnode.group);
+                     tip_members_text += thisnode.name + " - "+thisnode.cM+" cM <br/>";
+				}
+			}
+			if(clusters.size>1){
+				
+				for(var c=1; c<(max_cluster+1); c++){
+				
+				clusters.forEach( function(cluster) {
+					if(cluster==c){
+						sorted_clusters.add(c);
+					}
+				});
+				}
+				
+			
+				tip_members_text = "";
+				sorted_clusters.forEach( function(cluster) {
+					for (var iiii = 0; iiii < json.nodes.length; iiii++) {
+					var thisnode = json.nodes[iiii];
+						if (thisnode.group == cluster){
+							tip_members_text += thisnode.name + " (cluster <b>"+thisnode.group+"</b>)<br/>";
+						}
+					}	
+					tip_members_text += "<br/>";
+				});
+				
+				sorted_clusters.forEach( function(cluster) {
+				
+				if(tip_cluster_text.length>0){
+				tip_cluster_text+=" & ";
+				}
+				tip_cluster_text+="<b>Cluster "+cluster+"</b>";
+			});
+            }else{
+			clusters.forEach( function(cluster) {
+				tip_cluster_text+="<b>Matches in cluster "+cluster+" </b>";
+			
+			});
+			}
+			
+			if(tip_members_text_common_ancestor.length>0){
+			tip_members_text_common_ancestor="</br><b>Common ancestors "+nodes[p.y].name + "  +  " + nodes[p.x].name+"</b></br></br>"+tip_members_text_common_ancestor+"</br>";
+			}
+			tip_cluster_members_text = "<P ALIGN=LEFT>"+tip_members_text_common_ancestor+tip_cluster_text+"</br></br>"+tip_members_text+"<br/><br/>"+commonSurnames+"</P>";
+			
+			
+
+            div.html(nodes[p.y].name + "  +  " + nodes[p.x].name + tip_cluster_members_text)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY) + "px");
+        }
+
+
+        function mouseout(p) {
+            d3.selectAll("text").classed("active", false);
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
+
+            var ynode = p.y;
+            var xnode = p.x;
+            d3.selectAll(".cluster_" + json.nodes[ynode].group)
+                .style("fill-opacity", function (d) {
+                    return z(d.z) + 0.5;
+                });
+            d3.selectAll(".cluster_" + json.nodes[xnode].group)
+                .style("fill-opacity", function (d) {
+                    return z(d.z) + 0.5;
+                });
+        }
+
+        d3.select("#order").on("change", function () {
+            clearTimeout(timeout);
+            order(this.value);
+        });
+
+        function order(value) {
+            x.domain(orders[value]);
+
+            var t = svg.transition().duration(3500);
+
+            t.selectAll(".row")
+                .delay(function (d, i) {
+                    return x(i) * 4;
+                })
+                .attr("transform", function (d, i) {
+                    return "translate(0," + x(i) + ")";
+                })
+                .selectAll(".cell")
+                .delay(function (d) {
+                    return x(d.x) * 4;
+                })
+                .attr("x", function (d) {
+                    return x(d.x);
+                });
+
+            t.selectAll(".icon")
+                .delay(function(d) { return x(d.x) * 4; })
+                .attr("transform", function(d, i) {
+                var scale = (x.rangeBand()/((this.getBBox()['height']+this.getBBox()['width'])/2)*0.9);
+                var marginTop = (x.rangeBand()-(this.getBBox()['height']*scale))/2;
+                var marginLeft = (x.rangeBand()-(this.getBBox()['width']*scale))/2;
+                return "translate(" + (x(d.x)+marginLeft) + ", " + marginTop + ")scale("+ scale +")";
+                })
+            t.selectAll(".column")
+                .delay(function (d, i) {
+                    return x(i) * 4;
+                })
+                .attr("transform", function (d, i) {
+                    return "translate(" + x(i) + ")rotate(-90)";
+                });
+        }
+
+        var timeout = setTimeout(function () {
+            order("group");
+            d3.select("#order").property("selectedIndex", 2).node().focus();
+        }, 300);
+
+ function getClusterGlobalData(){
+return "<span class=\"info\">Total number of DNA Matches: <span class=\"number\">"+globalInfo.total_number_dna_matches+"</span></span>"
++"<span class=\"info\">Min threshold: <span class=\"number\">"+globalInfo.min_cm+" cM</span></span>"
++"<span class=\"info\">Max threshold: <span class=\"number\">"+globalInfo.max_cm+" cM</span></span>"
++"<span class=\"info\">Min cluster size: <span class=\"number\">"+globalInfo.min_cluster_size+" members</span></span>"
+;
+
+
+
+}
+
+        document.querySelector(".global-clusters_wrapper").innerHTML = getClusterGlobalData();
+
+    </script>
+<div style="position: relative; width: 750px; margin:auto;" width="750px" align="center">
+<div align="center">
+
+</br></br><h2>Information about DNA match</h2>
+</div>
+DNA match Jessica shares a total of 68.3 cM of which 3 segment(s) are 10 cM or larger. The following segment(s) larger than or equal to 10 cM are shared: </br></br></br>chromosome <b>4</b> :<b> 14.8 cM</b>, start: 90062409 end: 109959957 and 2390 SNPs</br>chromosome <b>12</b> :<b> 15.1 cM</b>, start: 11397876 end: 20243244 and 1433 SNPs</br>chromosome <b>15</b> :<b> 38.4 cM</b>, start: 61084728 end: 92079104 and 4880 SNPs</br></br>
+A total of <b>7</b> shared matches were used for this match. After getting the shared matches of these shared matches, a total of <b>7</b> DNA matches were used for the clustering. <a href="GEDmatch_AC6176045.html">Thais Pedroso </a> (59.4 cM), <a href="GEDmatch_CA6917206.html">Elenite AssunA_A_o Soares </a> (26.9 cM), <a href="GEDmatch_CM1719915.html">Pedro Arruda </a> (33.3 cM), <a href="GEDmatch_PN1916344.html">Wiana </a> (34.4 cM), <a href="GEDmatch_WE8364628.html">Arthur Gael Marques Albuquerque </a> (40.9 cM), <a href="GEDmatch_WQ2064597.html">Carlos Machado </a> (30.2 cM), <a href="GEDmatch_XN5601537.html">Samuel Mesquita </a> (19.9 cM), </br></br>
+
+
+<br>
+</div>
+<div style="position: relative; width: 750px; margin:auto;" width="750px" align="center">
+<div align="center">
+
+<h2>Explanation of DNA match report</h2>
+</div>
+<p>For each match that was retrieved an AutoCluster report is created using the targeted clustering approach. For this analysis, we take the shared matches for the concerned match. Next, we download the shared matches of these shared matches. The resulting matches are used for the AutoCluster report. They represent the clusters for which the match is a member.<br><br> Next, we provide the results for the <a href="https://www.geneticaffairs.com/features-autosegment.html">AutoSegment</a> analysis that is performed using overlapping segments for the match. To verify these overlapping segments, we use shared match data for FamilyTreeDNA matches. Overlapping segments for which the linked DNA matches are not shared match are not taken into account. For the GEDmatch procedure, we employ the triangulation data from GEDmatch. <br><br>
+
+</div>
+
+<div align="center">
+    <h2 style="padding-top: 50px">AutoCluster Cluster Information</h2><br />
+
+<div style="text-align:center">
+
+This table contains all shared matches for which shared matches were retrieved and that were used for the clustering. </br></br>
+<button id="download-clusters">Download spreadsheet with clusters</button>
+</div>
+</div>
+
+
+<div style="position: relative; width: 1450px; margin:auto;" width="1450px" align="center">
+<div id="users-table" style="position: relative; width: 1450px; margin:auto;" width="1450px" align="center">
+<script>
+
+var table= new Tabulator("#users-table", {
+initialSort:[
+{column:"group", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1200px",
+    layout:"fitDataFill",
+    responsiveLayout:"collapse",
+    groupBy:"group_",
+    columns:[
+   {formatter:"responsiveCollapse", width:60, minWidth:60, align:"center", resizable:false, headerSort:false}, 
+        {title:"Name", field:"name", width:200, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search", formatterParams:{
+	 urlField:"url",
+    labelField:"name",
+    target:"_blank",
+            }},
+        {title:"kitnum", field:"kitnum", align:"center",width:100, headerFilterPlaceholder:"Search"},
+        {title:"cM with tested person", field:"cM", align:"center",width:150, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"cM with Jessica", field:"icw_cM", align:"center",width:150, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"# Shared matches", field:"icw", align:"center", width:150, headerFilter:"number", headerFilterPlaceholder:"Max # shared matches", headerFilterFunc:">="},
+        {title:"Cluster", field:"group", align:"center",sorter:"number",width:100, headerFilter:true, headerFilterPlaceholder:"Search for cluster"},
+        {title:"Tree", field:"url", align:"center", width:77, formatter:"link", 		formatterParams:{
+		    urlField:"treeId",
+    		labelField:"treeDesc",
+    		target:"_blank",
+            }},
+    ],
+});
+table.setData(tableData);
+document.getElementById("download-clusters").addEventListener("click", function(){
+table.download("xlsx", "cluster_data.xlsx", {sheetName:"Clusters"});
+});
+</script>
+</div>
+</div>
+<div style="position: relative; width: 1150px; margin:auto; width:1150px; text-align:center"><div id="segments">
+<h2>Chromosome segments</h2>
+</div>
+
+<script type="text/javascript">
+
+var config = {
+container: "#segments",organism: 'human',
+chrHeight: 900,
+chrMargin: 2,
+annotations:[{"stop":20243244,"color":"#804080","name":"segment from cluster 43 sharing 15.1 cM with Jessica","start":11397876,"chr":"12"},{"stop":20243244,"color":"#804080","name":"segment from cluster 43 sharing 15.1 cM with Jessica","start":11397876,"chr":"12"},{"stop":92079104,"color":"#008000","name":"segment from cluster 5 sharing 38.4 cM with Jessica","start":61084728,"chr":"15"},{"stop":92079104,"color":"#008000","name":"segment from cluster 5 sharing 38.4 cM with Jessica","start":61084728,"chr":"15"},{"stop":109959957,"color":"#ffa07a","name":"segment not in segment cluster sharing 14.8 cM with Jessica","start":90062409,"chr":"4"},{"stop":109959957,"color":"#ffa07a","name":"segment not in segment cluster sharing 14.8 cM with Jessica","start":90062409,"chr":"4"}],
+ annotationsLayout: 'overlay',
+orientation: 'horizontal'
+ };
+var ideogram = new Ideogram(config);
+ </script>
+</div>
+<div style="position: relative; width: 1150px; margin:auto; width:1150px; text-align:center">
+<div align="center">
+
+<h2>Explanation of chromosome browser</h2>
+</div>
+<p>A chromosome browser provides a graphical representation of the segments that are shared with this DNA match. Before we visualize the shared DNA segments we perform a clustering to group segments that are overlapping. Next, these segment clusters are visualized using a certain color. Segments that are not present in an segment cluster are represented by orange segments. In addition to the graphical representation a table is available that contains the detailed information for the segment clusters as well as a table with the segments that are not clustered together.<br><br>
+
+</div>
+
+<div align="center">
+    <h2 style="padding-top: 50px">GEDmatch segment clusters for match Jessica</h2><br />
+</div>
+
+
+<div style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<div id="users-table_linked" style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<script>
+var tableData_linked =[{"note":"","color":"#90EE90","start":11397876,"cM":15.1,"roh":"","snps":1433,"chr":12,"url":"mailto:jessicaemfarias@gmail.com","bar":[1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":68.3,"dtc":"GEDmatch","stop":20243244,"name":"Jessica","matchurl":"GEDmatch_NJ5052929.html","group_":"156","email":"jessicaemfarias@gmail.com"},{"note":"","color":"#90EE90","start":11908529,"cM":14.0,"roh":"","snps":1523,"chr":12,"url":"mailto:wiana_aguiar@hotmail.com","bar":[1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":34.4,"dtc":"GEDmatch","stop":20280672,"name":"Wiana","matchurl":"GEDmatch_PN1916344.html","group_":"156","email":"wiana_aguiar@hotmail.com"},{"note":"","color":"#ffab95","start":81179553,"cM":14.2,"roh":"","snps":1778,"chr":15,"url":"mailto:thaispedroso9@hotmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":59.4,"dtc":"GEDmatch","stop":92013382,"name":"Thais Pedroso","matchurl":"GEDmatch_AC6176045.html","group_":"13","email":"thaispedroso9@hotmail.com"},{"note":"","color":"#ffab95","start":68653557,"cM":26.9,"roh":"","snps":3969,"chr":15,"url":"mailto:dra.maianavieira@gmail.com","bar":[1,1,1,1,1,1,1,1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":26.9,"dtc":"GEDmatch","stop":91617539,"name":"Elenite AssunA_A_o Soares","matchurl":"GEDmatch_CA6917206.html","group_":"13","email":"dra.maianavieira@gmail.com"},{"note":"","color":"#ffedff","start":63207340,"cM":33.3,"roh":"","snps":1473,"chr":15,"url":"mailto:pedroarruda.ofurtado@gmail.com","bar":[1,1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":33.3,"dtc":"GEDmatch","stop":91411656,"name":"Pedro Arruda","matchurl":"GEDmatch_CM1719915.html","group_":"14","email":"pedroarruda.ofurtado@gmail.com"},{"note":"","color":"#ffedff","start":61084728,"cM":38.4,"roh":"","snps":4880,"chr":15,"url":"mailto:jessicaemfarias@gmail.com","bar":[1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":68.3,"dtc":"GEDmatch","stop":92079104,"name":"Jessica","matchurl":"GEDmatch_NJ5052929.html","group_":"14","email":"jessicaemfarias@gmail.com"},{"note":"","color":"#ffedff","start":62427364,"cM":13.4,"roh":"","snps":1406,"chr":15,"url":"mailto:prof.andrehenrique@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":40.9,"dtc":"GEDmatch","stop":71437710,"name":"Arthur Gael Marques Albuquerque","matchurl":"GEDmatch_WE8364628.html","group_":"14","email":"prof.andrehenrique@gmail.com"},{"note":"","color":"#ffedff","start":61178032,"cM":14.9,"roh":"","snps":1387,"chr":15,"url":"mailto:betolosuk@gmail.com","bar":[1,1,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":30.2,"dtc":"GEDmatch","stop":71109147,"name":"Carlos Machado","matchurl":"GEDmatch_WQ2064597.html","group_":"14","email":"betolosuk@gmail.com"},{"note":"","color":"#ffedff","start":61913884,"cM":19.9,"roh":"","snps":2623,"chr":15,"url":"mailto:projetodna@outlook.pt","bar":[1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":19.9,"dtc":"GEDmatch","stop":79347269,"name":"Samuel Mesquita","matchurl":"GEDmatch_XN5601537.html","group_":"14","email":"projetodna@outlook.pt"}]
+//generate bar chart
+var barFormatter = function(cell, formatterParams, onRendered){
+onRendered(function(){ //instantiate sparkline after the cell element has been aded to the DOM
+$(cell.getElement()).sparkline(cell.getValue(), {width:"100%", type:"bar", barWidth:5, disableTooltips:true});
+});
+};
+
+
+var table_linked = new Tabulator("#users-table_linked", {
+initialSort:[
+{column:"start", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1300px",
+    layout:"fitDataFill",
+  rowFormatter:function(row){  
+           row.getElement().style.backgroundColor = row.getData().color;
+    },
+    responsiveLayout:"collapse",
+    columns:[
+        {title:"Cluster", field:"cluster", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Segment Cluster", field:"group_", align:"center",width:160, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Chr", field:"chr", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Start", field:"start", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Stop", field:"stop", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+{title:"Segment representation", field:"bar", width:250, formatter:barFormatter},
+        {title:"SNP count", field:"snps", align:"center",width:120, headerFilter:true, headerFilterPlaceholder:"Search"},
+   {title:"Match", field:"matchurl", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for name", formatterParams:{
+	 urlField:"matchurl",
+    labelField:"name",
+    target:"_blank",
+            }},
+   {title:"Email", field:"email", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for email", formatterParams:{
+	 urlField:"url",
+    labelField:"email",
+    target:"_blank",
+            }},
+        {title:"cM", field:"cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"Total cM", field:"total_cM", align:"center",width:120, headerFilter:"number", headerFilterPlaceholder:"Total cM", headerFilterFunc:">="},
+        {title:"Notes", field:"note", width:200, headerFilter:true, headerFilterPlaceholder:"Search for notes"},
+    ],
+});
+table_linked.setData(tableData_linked);
+</script>
+</div>
+<div align="center">
+    <h2 style="padding-top: 50px">GEDmatch segments not in segment clusters for match Jessica</h2><br />
+</div>
+
+
+<div style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<div id="users-table_lonely" style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<script>
+var tableData_lonely =[{"note":"","color":"","start":90062409,"cM":14.8,"roh":"","snps":2390,"chr":4,"url":"mailto:jessicaemfarias@gmail.com","total_cM":68.3,"dtc":"GEDmatch","stop":109959957,"name":"Jessica","matchurl":"GEDmatch_NJ5052929.html","group_":"","email":"jessicaemfarias@gmail.com"}]
+//generate bar chart
+var barFormatter = function(cell, formatterParams, onRendered){
+onRendered(function(){ //instantiate sparkline after the cell element has been aded to the DOM
+$(cell.getElement()).sparkline(cell.getValue(), {width:"100%", type:"bar", barWidth:5, disableTooltips:true});
+});
+};
+
+
+var table_lonely = new Tabulator("#users-table_lonely", {
+initialSort:[
+{column:"start", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1300px",
+    layout:"fitDataFill",
+  rowFormatter:function(row){  
+           row.getElement().style.backgroundColor = row.getData().color;
+    },
+    responsiveLayout:"collapse",
+    columns:[
+        {title:"Cluster", field:"cluster", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Segment Cluster", field:"group_", align:"center",width:160, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Chr", field:"chr", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Start", field:"start", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Stop", field:"stop", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+{title:"Segment representation", field:"bar", width:250, formatter:barFormatter},
+        {title:"SNP count", field:"snps", align:"center",width:120, headerFilter:true, headerFilterPlaceholder:"Search"},
+   {title:"Match", field:"matchurl", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for name", formatterParams:{
+	 urlField:"matchurl",
+    labelField:"name",
+    target:"_blank",
+            }},
+   {title:"Email", field:"email", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for email", formatterParams:{
+	 urlField:"url",
+    labelField:"email",
+    target:"_blank",
+            }},
+        {title:"cM", field:"cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"Total cM", field:"total_cM", align:"center",width:120, headerFilter:"number", headerFilterPlaceholder:"Total cM", headerFilterFunc:">="},
+        {title:"Notes", field:"note", width:200, headerFilter:true, headerFilterPlaceholder:"Search for notes"},
+    ],
+});
+table_lonely.setData(tableData_lonely);
+</script>
+</div>
+<footer>
+<aside>September 10 2026</aside>
+<a href="https://www.linkedin.com/in/evert-jan-blom/" rel="author">Evert-Jan Blom</a>, d3.js template by Mike Bostock
+</footer>
+</body>
+</html>

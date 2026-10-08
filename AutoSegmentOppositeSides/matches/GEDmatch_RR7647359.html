@@ -1,0 +1,163 @@
+<html class="genetic-affairs">
+<head>
+    <meta charset="utf-8"/>
+    <title>Genetic Affairs - DNA match report L Bradley Green</title>
+    <link href="geneticaffairs.css" rel="stylesheet">
+    <link href="geneticaffairs_tree.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.1.2/css/semantic-ui/tabulator_semantic-ui.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="page-header">
+    <div>
+        <h1 class="title">DNA match report</h1>
+		<h2 class="subtitle">For: L Bradley Green RR7647359 GEDmatch September 10 2026 </h2>
+    </div>
+	<div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.2/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.8.1/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.0/xlsx.full.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ideogram@1.15.0/dist/js/ideogram.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script>
+
+      
+
+        function createElipsisText(text){
+            var maxStringlength=20;
+            if(text.length < maxStringlength){return text}else{
+                return text.slice(0,maxStringlength) + "...";
+            }
+        }
+
+        (function () {
+            if (typeof NodeList.prototype.forEach === "function") return false;
+            NodeList.prototype.forEach = Array.prototype.forEach;
+        })();
+
+
+		
+          var globalInfo = {total_number_dna_matches: 2, min_cm: 21, max_cm: 30, min_match_shared_cm: 0, min_cluster_size:1,triangulated_groups:false}
+		var commonAncestorClusters = []
+		var autoPedigreeClusters = []
+		var commonAncestors = []
+
+
+
+}
+
+        document.querySelector(".global-clusters_wrapper").innerHTML = getClusterGlobalData();
+
+    </script>
+<div style="position: relative; width: 750px; margin:auto;" width="750px" align="center">
+<div align="center">
+
+</br></br><h2>Information about DNA match</h2>
+</div>
+DNA match L Bradley Green shares a total of 21.0 cM of which 2 segment(s) are 10 cM or larger. The following segment(s) larger than or equal to 10 cM are shared: </br></br></br>chromosome <b>17</b> :<b> 10.6 cM</b>, start: 8022065 end: 10977573 and 500 SNPs</br>chromosome <b>18</b> :<b> 10.4 cM</b>, start: 7086310 end: 9775372 and 459 SNPs</br></br>
+A total of <b>1</b> shared matches were used for this match. After getting the shared matches of these shared matches, a total of <b>1</b> DNA matches were used for the clustering. <a href="GEDmatch_WQ2064597.html">Carlos Machado </a> (30.2 cM), </br></br>
+
+
+<br>
+</div>
+<div style="position: relative; width: 750px; margin:auto;" width="750px" align="center">
+<div align="center">
+
+<h2>Explanation of DNA match report</h2>
+</div>
+<p>For each match that was retrieved an AutoCluster report is created using the targeted clustering approach. For this analysis, we take the shared matches for the concerned match. Next, we download the shared matches of these shared matches. The resulting matches are used for the AutoCluster report. They represent the clusters for which the match is a member.<br><br> Next, we provide the results for the <a href="https://www.geneticaffairs.com/features-autosegment.html">AutoSegment</a> analysis that is performed using overlapping segments for the match. To verify these overlapping segments, we use shared match data for FamilyTreeDNA matches. Overlapping segments for which the linked DNA matches are not shared match are not taken into account. For the GEDmatch procedure, we employ the triangulation data from GEDmatch. <br><br>
+
+</div>
+
+<div style="position: relative; width: 1150px; margin:auto; width:1150px; text-align:center"><div id="segments">
+<h2>Chromosome segments</h2>
+</div>
+
+<script type="text/javascript">
+
+var config = {
+container: "#segments",organism: 'human',
+chrHeight: 900,
+chrMargin: 2,
+annotations:[{"stop":10977573,"color":"#80ff80","name":"segment from cluster 50 sharing 10.6 cM with L Bradley Green","start":8022065,"chr":"17"},{"stop":10977573,"color":"#80ff80","name":"segment from cluster 50 sharing 10.6 cM with L Bradley Green","start":8022065,"chr":"17"},{"stop":9775372,"color":"#00c0ff","name":"segment from cluster 18 sharing 10.4 cM with L Bradley Green","start":7086310,"chr":"18"},{"stop":9775372,"color":"#00c0ff","name":"segment from cluster 18 sharing 10.4 cM with L Bradley Green","start":7086310,"chr":"18"}],
+ annotationsLayout: 'overlay',
+orientation: 'horizontal'
+ };
+var ideogram = new Ideogram(config);
+ </script>
+</div>
+<div style="position: relative; width: 1150px; margin:auto; width:1150px; text-align:center">
+<div align="center">
+
+<h2>Explanation of chromosome browser</h2>
+</div>
+<p>A chromosome browser provides a graphical representation of the segments that are shared with this DNA match. Before we visualize the shared DNA segments we perform a clustering to group segments that are overlapping. Next, these segment clusters are visualized using a certain color. Segments that are not present in an segment cluster are represented by orange segments. In addition to the graphical representation a table is available that contains the detailed information for the segment clusters as well as a table with the segments that are not clustered together.<br><br>
+
+</div>
+
+<div align="center">
+    <h2 style="padding-top: 50px">GEDmatch segment clusters for match L Bradley Green</h2><br />
+</div>
+
+
+<div style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<div id="users-table_linked" style="position: relative; width: 1550px; margin:auto;" width="1550px" align="center">
+<script>
+var tableData_linked =[{"note":"","color":"#3eedff","start":7996640,"cM":11.0,"roh":"","snps":541,"chr":17,"url":"mailto:ruff.sebastian@gmail.com","bar":[1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":11.0,"dtc":"GEDmatch","stop":11181602,"name":"Sebastian Ruff","matchurl":"GEDmatch_RH2625517.html","group_":"170","email":"ruff.sebastian@gmail.com"},{"note":"","color":"#fffd1c","start":8022065,"cM":10.6,"roh":"","snps":500,"chr":17,"url":"mailto:niknodder@gmail.com","bar":[1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1],"total_cM":21.0,"dtc":"GEDmatch","stop":10977573,"name":"L Bradley Green","matchurl":"GEDmatch_RR7647359.html","group_":"171","email":"niknodder@gmail.com"},{"note":"","color":"#3eedff","start":7257071,"cM":11.1,"roh":"","snps":507,"chr":18,"url":"mailto:vtaylorphd@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.1,"dtc":"GEDmatch","stop":10132916,"name":"*JC","matchurl":"GEDmatch_ES6389290.html","group_":"53","email":"vtaylorphd@gmail.com"},{"note":"","color":"#3eedff","start":7249740,"cM":11.1,"roh":"","snps":506,"chr":18,"url":"mailto:genscan@tds.net","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.1,"dtc":"GEDmatch","stop":10132916,"name":"*VG","matchurl":"GEDmatch_MN9906269.html","group_":"53","email":"genscan@tds.net"},{"note":"","color":"#fffd1c","start":7222638,"cM":12.1,"roh":"","snps":551,"chr":18,"url":"mailto:ingraydotcom@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":22.6,"dtc":"GEDmatch","stop":10330738,"name":"Ineza Grabowska","matchurl":"GEDmatch_EX7497238.html","group_":"54","email":"ingraydotcom@gmail.com"},{"note":"","color":"#fffd1c","start":7222638,"cM":11.3,"roh":"","snps":508,"chr":18,"url":"mailto:gachecanie@yahoo.fr","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.3,"dtc":"GEDmatch","stop":10132916,"name":"Schatz Nadia","matchurl":"GEDmatch_LD1731768.html","group_":"54","email":"gachecanie@yahoo.fr"},{"note":"","color":"#58ff58","start":7222638,"cM":11.2,"roh":"","snps":505,"chr":18,"url":"mailto:rollandaudrey07@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.2,"dtc":"GEDmatch","stop":10121179,"name":"ROLLAND","matchurl":"GEDmatch_GK4821153.html","group_":"55","email":"rollandaudrey07@gmail.com"},{"note":"","color":"#58ff58","start":7222638,"cM":12.1,"roh":"","snps":563,"chr":18,"url":"mailto:bomcdani@yahoo.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":12.1,"dtc":"GEDmatch","stop":10335211,"name":"William S Gregory","matchurl":"GEDmatch_RQ3004981.html","group_":"55","email":"bomcdani@yahoo.com"},{"note":"","color":"#ff4e50","start":7222638,"cM":12.3,"roh":"","snps":562,"chr":18,"url":"mailto:orbitalnoise@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":22.5,"dtc":"GEDmatch","stop":10384101,"name":"scott aikens","matchurl":"GEDmatch_MN8663692.html","group_":"56","email":"orbitalnoise@gmail.com"},{"note":"","color":"#ff4e50","start":7171561,"cM":11.1,"roh":"","snps":495,"chr":18,"url":"mailto:soren@boxrec.com","bar":[1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.1,"dtc":"GEDmatch","stop":10029510,"name":"SA_ren Freiheit","matchurl":"GEDmatch_RZ1110541.html","group_":"56","email":"soren@boxrec.com"},{"note":"","color":"#ffcdff","start":6653590,"cM":15.3,"roh":"","snps":680,"chr":18,"url":"mailto:betolosuk@gmail.com","bar":[1,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":30.2,"dtc":"GEDmatch","stop":10390247,"name":"Carlos Machado","matchurl":"GEDmatch_WQ2064597.html","group_":"57","email":"betolosuk@gmail.com"},{"note":"","color":"#ffcdff","start":6977044,"cM":11.4,"roh":"","snps":515,"chr":18,"url":"mailto:portella.fabio@gmail.com","bar":[1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.4,"dtc":"GEDmatch","stop":9872787,"name":"Fabio Portela Barroso","matchurl":"GEDmatch_XM6801985.html","group_":"57","email":"portella.fabio@gmail.com"},{"note":"","color":"#ffab95","start":7171561,"cM":11.5,"roh":"","snps":519,"chr":18,"url":"mailto:shak.wee@hotmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.5,"dtc":"GEDmatch","stop":10132916,"name":"Titus GaA_tan","matchurl":"GEDmatch_CA1053448.html","group_":"58","email":"shak.wee@hotmail.com"},{"note":"","color":"#ffedff","start":6999377,"cM":11.0,"roh":"","snps":486,"chr":18,"url":"mailto:paredesnathalie@hotmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":21.1,"dtc":"GEDmatch","stop":9800733,"name":"MANUELA MARTIN PAREDES","matchurl":"GEDmatch_CM4811546.html","group_":"59","email":"paredesnathalie@hotmail.com"},{"note":"","color":"#ffff44","start":7222638,"cM":11.3,"roh":"","snps":508,"chr":18,"url":"mailto:padude28@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.3,"dtc":"GEDmatch","stop":10132916,"name":"Brandon McClure","matchurl":"GEDmatch_DU8536855.html","group_":"60","email":"padude28@gmail.com"},{"note":"","color":"#2effff","start":7222638,"cM":10.8,"roh":"","snps":482,"chr":18,"url":"mailto:polakovanatalia016@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":10.8,"dtc":"GEDmatch","stop":10029510,"name":"N P","matchurl":"GEDmatch_FS2075397.html","group_":"61","email":"polakovanatalia016@gmail.com"},{"note":"","color":"#3eedff","start":7114212,"cM":10.7,"roh":"","snps":480,"chr":18,"url":"mailto:lamalebo@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":31.7,"dtc":"GEDmatch","stop":9878893,"name":"*Herta","matchurl":"GEDmatch_GP8815350.html","group_":"62","email":"lamalebo@gmail.com"},{"note":"","color":"#fffd1c","start":7310566,"cM":10.8,"roh":"","snps":491,"chr":18,"url":"mailto:prvarrie@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":10.8,"dtc":"GEDmatch","stop":10132916,"name":"Peter Varrie","matchurl":"GEDmatch_GV9868977.html","group_":"63","email":"prvarrie@gmail.com"},{"note":"","color":"#58ff58","start":6854453,"cM":14.3,"roh":"","snps":646,"chr":18,"url":"mailto:runhall.lab@outlook.com","bar":[1,1,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":14.3,"dtc":"GEDmatch","stop":10390247,"name":"Birgitta A_stlund","matchurl":"GEDmatch_HS8531405.html","group_":"64","email":"runhall.lab@outlook.com"},{"note":"","color":"#ff4e50","start":7222638,"cM":17.1,"roh":"","snps":867,"chr":18,"url":"mailto:vesela.hana.ji@seznam.cz","bar":[1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":17.1,"dtc":"GEDmatch","stop":12265277,"name":"*BoA_ena LounkovA_","matchurl":"GEDmatch_LJ3656351.html","group_":"65","email":"vesela.hana.ji@seznam.cz"},{"note":"","color":"#ffcdff","start":7369572,"cM":11.2,"roh":"","snps":516,"chr":18,"url":"mailto:smail.bourazza@gmail.com","bar":[1,1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.2,"dtc":"GEDmatch","stop":10320252,"name":"Smail Bourazza","matchurl":"GEDmatch_QC7717943.html","group_":"66","email":"smail.bourazza@gmail.com"},{"note":"","color":"#ffab95","start":7086310,"cM":10.4,"roh":"","snps":459,"chr":18,"url":"mailto:niknodder@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":21.0,"dtc":"GEDmatch","stop":9775372,"name":"L Bradley Green","matchurl":"GEDmatch_RR7647359.html","group_":"67","email":"niknodder@gmail.com"},{"note":"","color":"#ffedff","start":6953989,"cM":11.2,"roh":"","snps":504,"chr":18,"url":"mailto:radkevich.d.b@gmail.com","bar":[1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.2,"dtc":"GEDmatch","stop":9800733,"name":"Maria Prigodich","matchurl":"GEDmatch_SZ8693415.html","group_":"68","email":"radkevich.d.b@gmail.com"},{"note":"","color":"#ffff44","start":7222638,"cM":12.1,"roh":"","snps":552,"chr":18,"url":"mailto:dmiaco@yahoo.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":12.1,"dtc":"GEDmatch","stop":10333051,"name":"pam","matchurl":"GEDmatch_TU9431032.html","group_":"69","email":"dmiaco@yahoo.com"},{"note":"","color":"#2effff","start":7033037,"cM":11.1,"roh":"","snps":496,"chr":18,"url":"mailto:sarahjobmann@icloud.com","bar":[1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.1,"dtc":"GEDmatch","stop":9869741,"name":"Sarah Jobmann","matchurl":"GEDmatch_XU4446735.html","group_":"70","email":"sarahjobmann@icloud.com"},{"note":"","color":"#3eedff","start":7171561,"cM":11.1,"roh":"","snps":503,"chr":18,"url":"mailto:Virre.b@hotmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"total_cM":11.1,"dtc":"GEDmatch","stop":10029510,"name":"Rolf","matchurl":"GEDmatch_YQ6217490.html","group_":"71","email":"Virre.b@hotmail.com"},{"note":"","color":"#fffd1c","start":7171561,"cM":22.4,"roh":"","snps":1874,"chr":18,"url":"mailto:edsoncfalves@gmail.com","bar":[1,1,1,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,1],"total_cM":36.5,"dtc":"GEDmatch","stop":19789487,"name":"JoA_o Pedro Alves","matchurl":"GEDmatch_ZC4664618.html","group_":"72","email":"edsoncfalves@gmail.com"}]
+//generate bar chart
+var barFormatter = function(cell, formatterParams, onRendered){
+onRendered(function(){ //instantiate sparkline after the cell element has been aded to the DOM
+$(cell.getElement()).sparkline(cell.getValue(), {width:"100%", type:"bar", barWidth:5, disableTooltips:true});
+});
+};
+
+
+var table_linked = new Tabulator("#users-table_linked", {
+initialSort:[
+{column:"start", dir:"asc"}, //sort by this first
+],
+    responsiveLayoutCollapseStartOpen:false,
+    width:"1300px",
+    layout:"fitDataFill",
+  rowFormatter:function(row){  
+           row.getElement().style.backgroundColor = row.getData().color;
+    },
+    responsiveLayout:"collapse",
+    columns:[
+        {title:"Cluster", field:"cluster", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Segment Cluster", field:"group_", align:"center",width:160, headerFilter:true, headerFilterPlaceholder:"Segment cluster"},
+        {title:"Chr", field:"chr", align:"center",width:80, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Start", field:"start", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+        {title:"Stop", field:"stop", align:"center",width:100, headerFilter:true, headerFilterPlaceholder:"Search"},
+{title:"Segment representation", field:"bar", width:250, formatter:barFormatter},
+        {title:"SNP count", field:"snps", align:"center",width:120, headerFilter:true, headerFilterPlaceholder:"Search"},
+   {title:"Match", field:"matchurl", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for name", formatterParams:{
+	 urlField:"matchurl",
+    labelField:"name",
+    target:"_blank",
+            }},
+   {title:"Email", field:"email", width:150, formatter:"link",headerFilter:true, headerFilterPlaceholder:"Search for email", formatterParams:{
+	 urlField:"url",
+    labelField:"email",
+    target:"_blank",
+            }},
+        {title:"cM", field:"cM", align:"center",width:80, headerFilter:"number", headerFilterPlaceholder:"Max cM", headerFilterFunc:">="},
+        {title:"Total cM", field:"total_cM", align:"center",width:120, headerFilter:"number", headerFilterPlaceholder:"Total cM", headerFilterFunc:">="},
+        {title:"Notes", field:"note", width:200, headerFilter:true, headerFilterPlaceholder:"Search for notes"},
+    ],
+});
+table_linked.setData(tableData_linked);
+</script>
+</div>
+<footer>
+<aside>September 10 2026</aside>
+<a href="https://www.linkedin.com/in/evert-jan-blom/" rel="author">Evert-Jan Blom</a>, d3.js template by Mike Bostock
+</footer>
+</body>
+</html>
